@@ -36,23 +36,31 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.0, delay: 0.1, ease: 'easeOut' }}
-            className="relative flex justify-center mb-3"
+            className="relative flex justify-center mb-4"
           >
-            {/* Soft bloom */}
+            {/* Strong light bloom — makes dark logo elements visible against hero */}
             <div
-              className="absolute pointer-events-none rounded-full"
+              className="absolute pointer-events-none"
               style={{
-                inset: '-30px',
-                background: 'radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.1) 0%, rgba(200,16,46,0.08) 50%, transparent 75%)',
+                width: '340px',
+                height: '340px',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                background:
+                  'radial-gradient(ellipse 60% 65% at 50% 52%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 40%, rgba(200,16,46,0.06) 65%, transparent 80%)',
+                zIndex: 0,
               }}
             />
             <img
               src={companyLogo}
               alt="Gulf Ventures Logo"
-              className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain relative z-10"
+              className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
               style={{
                 mixBlendMode: 'screen',
-                filter: 'drop-shadow(0 0 22px rgba(200,16,46,0.75)) drop-shadow(0 0 55px rgba(200,16,46,0.3)) brightness(1.25) contrast(1.1)',
+                filter:
+                  'drop-shadow(0 0 28px rgba(200,16,46,0.8)) drop-shadow(0 0 70px rgba(200,16,46,0.35)) brightness(1.3) contrast(1.15)',
+                zIndex: 1,
               }}
             />
           </motion.div>
