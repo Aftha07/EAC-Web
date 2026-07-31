@@ -1,149 +1,169 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import heroBg from '@assets/gulf-ventures/hero-bg.jpg';
-import companyLogo from '@assets/WhatsApp_Image_2026-07-30_at_12.05.01_1785516069310.jpeg';
+import companyLogo from '@assets/WhatsApp_Image_2026-07-30_at_12,05,01-Picsart-BackgroundRemov_1785516492951.jpeg';
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   return (
-    <section 
-      id="home" 
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-    >
-      {/* Background Image with Parallax */}
-      <motion.div 
+    <section id="home" className="relative min-h-screen w-full overflow-hidden">
+      {/* Background */}
+      <motion.div
         className="absolute inset-0 z-0"
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 2.2, ease: 'easeOut' }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/62 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Full-height flex column — header offset via pt, bottom stats at flex-end */}
+      <div className="relative z-10 flex flex-col items-center min-h-screen pt-20">
+        
+        {/* Centred hero body */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 w-full max-w-3xl mx-auto">
 
-        {/* Logo — hero centrepiece */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="flex justify-center mb-6"
-        >
-          <div className="relative">
-            {/* Glow ring behind logo */}
-            <div className="absolute inset-0 rounded-full bg-white/10 blur-2xl scale-110" />
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.0, delay: 0.1, ease: 'easeOut' }}
+            className="relative flex justify-center mb-3"
+          >
+            {/* Soft bloom */}
+            <div
+              className="absolute pointer-events-none rounded-full"
+              style={{
+                inset: '-30px',
+                background: 'radial-gradient(ellipse at 50% 60%, rgba(255,255,255,0.1) 0%, rgba(200,16,46,0.08) 50%, transparent 75%)',
+              }}
+            />
             <img
               src={companyLogo}
-              alt="Gulf Ventures Trading and Contracting LTD. Logo"
-              className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain rounded-2xl shadow-2xl ring-2 ring-white/20"
-              style={{ filter: 'drop-shadow(0 8px 32px rgba(200,16,46,0.35))' }}
+              alt="Gulf Ventures Logo"
+              className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain relative z-10"
+              style={{
+                mixBlendMode: 'screen',
+                filter: 'drop-shadow(0 0 22px rgba(200,16,46,0.75)) drop-shadow(0 0 55px rgba(200,16,46,0.3)) brightness(1.25) contrast(1.1)',
+              }}
             />
+          </motion.div>
+
+          {/* Company wordmark */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.35 }}
+            className="font-black text-white leading-none mb-1"
+            style={{
+              fontSize: 'clamp(2rem, 5.5vw, 3.8rem)',
+              letterSpacing: '-0.01em',
+              textShadow: '0 2px 40px rgba(0,0,0,0.6)',
+            }}
+          >
+            GULF VENTURES
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.48 }}
+            className="font-semibold text-[#C8102E] uppercase tracking-[0.28em] mb-4"
+            style={{ fontSize: 'clamp(0.55rem, 1.4vw, 0.78rem)' }}
+          >
+            Trading &nbsp;&amp;&nbsp; Contracting LTD.
+          </motion.p>
+
+          {/* Ornamental divider */}
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="w-14 h-px bg-gradient-to-r from-transparent to-[#C8102E]/65" />
+            <div className="w-1 h-1 rounded-full bg-[#C8102E]" />
+            <div className="w-5 h-px bg-[#C8102E]" />
+            <div className="w-1 h-1 rounded-full bg-[#C8102E]" />
+            <div className="w-14 h-px bg-gradient-to-l from-transparent to-[#C8102E]/65" />
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.7 }}
+            className="text-white/80 font-light tracking-wide mb-1"
+            style={{ fontSize: 'clamp(0.85rem, 1.9vw, 1.1rem)' }}
+          >
+            Engineering Reliable Industrial Solutions
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.75, delay: 0.82 }}
+            className="text-white/35 text-[9px] sm:text-[11px] tracking-[0.16em] uppercase mb-6"
+          >
+            General Contracting · Equipment Rental · Industrial Gas Supply · Material Trading
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.92 }}
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center"
+          >
+            <Button
+              onClick={() => scrollToSection('contact')}
+              size="lg"
+              className="bg-[#C8102E] hover:bg-[#a30d25] text-white font-bold uppercase tracking-widest text-xs px-9 py-4 h-auto rounded-none shadow-lg shadow-[#C8102E]/25 transition-all duration-300"
+              data-testid="cta-get-quote-hero"
+            >
+              Get a Quote
+            </Button>
+            <Button
+              onClick={() => scrollToSection('services')}
+              size="lg"
+              variant="outline"
+              className="border border-white/35 text-white hover:border-white/65 hover:bg-white/8 font-medium uppercase tracking-widest text-xs px-9 py-4 h-auto bg-transparent rounded-none transition-all duration-300"
+              data-testid="cta-explore-services"
+            >
+              Explore Services
+            </Button>
+          </motion.div>
+        </div>
+
+        {/* Stat bar — bottom of the flex column */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+          className="w-full bg-black/55 backdrop-blur-sm border-t border-white/10"
+        >
+          <div className="max-w-3xl mx-auto px-4 py-3 grid grid-cols-3 divide-x divide-white/10">
+            {[
+              { value: '15+', label: 'Years of Excellence' },
+              { value: '500+', label: 'Projects Delivered' },
+              { value: 'KSA', label: 'Kingdom of Saudi Arabia' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center px-3">
+                <p className="text-[#C8102E] font-bold text-base sm:text-lg leading-none mb-0.5">{stat.value}</p>
+                <p className="text-white/45 text-[9px] sm:text-[10px] uppercase tracking-widest">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
-
-        {/* Company full name */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-3"
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            GULF VENTURES
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl font-semibold text-[#C8102E] tracking-[0.2em] uppercase mt-1">
-            Trading and Contracting LTD.
-          </p>
-        </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center gap-3 mb-6"
-        >
-          <div className="h-px w-16 bg-[#C8102E]" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
-          <div className="h-px w-16 bg-[#C8102E]" />
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="text-lg sm:text-xl md:text-2xl font-bold text-white/90 mb-4"
-        >
-          Engineering Reliable Industrial Solutions
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-white/75 text-sm sm:text-base md:text-lg mb-10 max-w-3xl mx-auto leading-relaxed tracking-wide"
-        >
-          General Contracting • Equipment Rental • Industrial Gas Supply • Material Trading • Manpower Supply
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.85 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Button
-            onClick={() => scrollToSection('contact')}
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wide text-base px-8 py-6 h-auto"
-            data-testid="cta-get-quote-hero"
-          >
-            Get a Quote
-          </Button>
-          <Button
-            onClick={() => scrollToSection('services')}
-            size="lg"
-            variant="outline"
-            className="border-2 border-white text-white hover:bg-white hover:text-foreground font-bold uppercase tracking-wide text-base px-8 py-6 h-auto bg-transparent"
-            data-testid="cta-explore-services"
-          >
-            Explore Services
-          </Button>
-        </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2"
-        >
-          <div className="w-1 h-2 bg-white/50 rounded-full" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
