@@ -13,78 +13,68 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen w-full overflow-hidden">
-
       {/* Background */}
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 2.4, ease: 'easeOut' }}
+        transition={{ duration: 2.2, ease: 'easeOut' }}
       >
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
-        {/* Lighter centre so logo area has contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/88" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/62 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
       </motion.div>
 
-      {/* Content column */}
+      {/* Full-height flex column — header offset via pt, bottom stats at flex-end */}
       <div className="relative z-10 flex flex-col items-center min-h-screen pt-20">
+        
+        {/* Centred hero body */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 w-full max-w-3xl mx-auto">
 
-        {/* Hero body */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-4 w-full max-w-3xl mx-auto">
-
-          {/* ── LOGO ── */}
+          {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: 'easeOut' }}
-            className="mb-5"
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.0, delay: 0.1, ease: 'easeOut' }}
+            className="relative flex justify-center mb-4"
           >
-            {/*
-              Dark oval backdrop — seamlessly hides the JPEG black bg
-              and gives the mark crisp contrast without any glow/shadow tricks.
-              overflow:hidden + reduced height crops away the
-              "GULF VENTURES / TRADING AND CONTRACTING COMPANY" text
-              that sits in the bottom ~27 % of the image.
-            */}
+            {/* Strong light bloom — makes dark logo elements visible against hero */}
             <div
+              className="absolute pointer-events-none"
               style={{
-                width: '260px',
-                height: '200px',        /* 77 % of 260 — crops the text strip */
-                overflow: 'hidden',
-                borderRadius: '20px',
-                background: '#111111',  /* slightly lighter than pure black for contrast */
-                boxShadow:
-                  '0 0 0 1.5px rgba(200,16,46,0.5), 0 12px 56px rgba(0,0,0,0.6), 0 0 80px rgba(200,16,46,0.18)',
-                margin: '0 auto',
+                width: '340px',
+                height: '340px',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                background:
+                  'radial-gradient(ellipse 60% 65% at 50% 52%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 40%, rgba(200,16,46,0.06) 65%, transparent 80%)',
+                zIndex: 0,
               }}
-            >
-              <img
-                src={companyLogo}
-                alt="Gulf Ventures GVTC mark"
-                style={{
-                  width: '260px',
-                  height: '260px',
-                  objectFit: 'cover',
-                  objectPosition: 'top',
-                  display: 'block',
-                  /* Boost luminance so dark building elements stand out — no hue change */
-                  filter: 'brightness(1.6) contrast(1.2)',
-                }}
-              />
-            </div>
+            />
+            <img
+              src={companyLogo}
+              alt="Gulf Ventures Logo"
+              className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
+              style={{
+                mixBlendMode: 'screen',
+                filter:
+                  'drop-shadow(0 0 28px rgba(200,16,46,0.8)) drop-shadow(0 0 70px rgba(200,16,46,0.35)) brightness(1.3) contrast(1.15)',
+                zIndex: 1,
+              }}
+            />
           </motion.div>
 
-          {/* ── WORDMARK ── */}
+          {/* Company wordmark */}
           <motion.h1
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.38 }}
+            transition={{ duration: 0.85, delay: 0.35 }}
             className="font-black text-white leading-none mb-1"
             style={{
               fontSize: 'clamp(2rem, 5.5vw, 3.8rem)',
               letterSpacing: '-0.01em',
-              textShadow: '0 2px 30px rgba(0,0,0,0.6)',
+              textShadow: '0 2px 40px rgba(0,0,0,0.6)',
             }}
           >
             GULF VENTURES
@@ -93,9 +83,9 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.5 }}
+            transition={{ duration: 0.75, delay: 0.48 }}
             className="font-semibold text-[#C8102E] uppercase tracking-[0.28em] mb-4"
-            style={{ fontSize: 'clamp(0.55rem, 1.4vw, 0.8rem)' }}
+            style={{ fontSize: 'clamp(0.55rem, 1.4vw, 0.78rem)' }}
           >
             Trading &nbsp;&amp;&nbsp; Contracting LTD.
           </motion.p>
@@ -119,8 +109,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.7 }}
-            className="text-white/85 font-light tracking-wide mb-1"
-            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.15rem)' }}
+            className="text-white/80 font-light tracking-wide mb-1"
+            style={{ fontSize: 'clamp(0.85rem, 1.9vw, 1.1rem)' }}
           >
             Engineering Reliable Industrial Solutions
           </motion.p>
@@ -129,7 +119,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.75, delay: 0.82 }}
-            className="text-white/40 text-[9px] sm:text-[11px] tracking-[0.16em] uppercase mb-6"
+            className="text-white/35 text-[9px] sm:text-[11px] tracking-[0.16em] uppercase mb-6"
           >
             General Contracting · Equipment Rental · Industrial Gas Supply · Material Trading
           </motion.p>
@@ -138,13 +128,13 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.9 }}
+            transition={{ duration: 0.75, delay: 0.92 }}
             className="flex flex-col sm:flex-row gap-3 justify-center items-center"
           >
             <Button
               onClick={() => scrollToSection('contact')}
               size="lg"
-              className="bg-[#C8102E] hover:bg-[#a30d25] text-white font-bold uppercase tracking-widest text-xs px-10 py-4 h-auto rounded-none shadow-lg shadow-[#C8102E]/25 transition-all duration-300"
+              className="bg-[#C8102E] hover:bg-[#a30d25] text-white font-bold uppercase tracking-widest text-xs px-9 py-4 h-auto rounded-none shadow-lg shadow-[#C8102E]/25 transition-all duration-300"
               data-testid="cta-get-quote-hero"
             >
               Get a Quote
@@ -153,7 +143,7 @@ export function Hero() {
               onClick={() => scrollToSection('services')}
               size="lg"
               variant="outline"
-              className="border border-white/35 text-white hover:border-white/65 hover:bg-white/5 font-medium uppercase tracking-widest text-xs px-10 py-4 h-auto bg-transparent rounded-none transition-all duration-300"
+              className="border border-white/35 text-white hover:border-white/65 hover:bg-white/8 font-medium uppercase tracking-widest text-xs px-9 py-4 h-auto bg-transparent rounded-none transition-all duration-300"
               data-testid="cta-explore-services"
             >
               Explore Services
@@ -161,12 +151,12 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Stat bar */}
+        {/* Stat bar — bottom of the flex column */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.05 }}
-          className="w-full bg-black/60 backdrop-blur-sm border-t border-white/10"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+          className="w-full bg-black/55 backdrop-blur-sm border-t border-white/10"
         >
           <div className="max-w-3xl mx-auto px-4 py-3 grid grid-cols-3 divide-x divide-white/10">
             {[
