@@ -9,18 +9,10 @@ expertMode = true
 [workflows]
 runButton = "Start application"
 
-[[workflows.workflow]]
-name = "Start application"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd artifacts/gulf-ventures && PORT=5000 BASE_PATH=/ pnpm run dev"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 20332
+externalPort = 3001
