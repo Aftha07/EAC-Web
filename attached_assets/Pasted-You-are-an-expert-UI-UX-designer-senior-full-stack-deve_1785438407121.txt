@@ -1,0 +1,1019 @@
+You are an expert UI/UX designer, senior full-stack developer, SEO specialist, and branding expert.
+
+
+
+Design and develop a premium, world-class corporate website for:
+
+
+
+Gulf Ventures Trading and Contracting LTD.
+
+
+
+IMPORTANT:
+
+
+
+The website must be completely ORIGINAL.
+
+
+
+Do NOT copy any existing company website.
+
+
+
+Maintain the same premium modern design style, layout quality, animations, and user experience found in top-tier industrial company websites.
+
+
+
+The design should look clean, elegant, luxurious, highly professional, and suitable for one of the leading industrial contracting companies in Saudi Arabia.
+
+
+
+====================================================
+
+DESIGN STYLE
+
+====================================================
+
+
+
+Theme
+
+
+
+Premium
+
+
+
+Corporate
+
+
+
+Industrial
+
+
+
+Modern
+
+
+
+Luxury
+
+
+
+Professional
+
+
+
+Color Palette
+
+
+
+Primary:
+
+Black (#111111)
+
+
+
+Secondary:
+
+Deep Red (#C8102E)
+
+
+
+Background:
+
+White (#FFFFFF)
+
+
+
+Accent:
+
+Light Grey (#F5F5F5)
+
+
+
+Typography:
+
+Bold, modern and highly readable.
+
+
+
+Use large sections with plenty of white space.
+
+
+
+Smooth premium animations.
+
+
+
+Minimal rounded corners.
+
+
+
+Professional icons.
+
+
+
+Excellent mobile responsiveness.
+
+
+
+SEO optimized.
+
+
+
+Fast loading.
+
+
+
+====================================================
+
+BRANDING
+
+====================================================
+
+
+
+The company logo must be one of the strongest visual elements on the homepage.
+
+
+
+Do NOT place a tiny logo in the navigation corner.
+
+
+
+Display the logo prominently in the Hero Section together with the company name.
+
+
+
+The homepage should immediately establish Gulf Ventures as a premium industrial company.
+
+
+
+====================================================
+
+HEADER
+
+====================================================
+
+
+
+Sticky Navigation
+
+
+
+Logo
+
+
+
+Home
+
+
+
+About
+
+
+
+Services
+
+
+
+Clients
+
+
+
+Contact
+
+
+
+Large "Get a Quote" button.
+
+
+
+====================================================
+
+HERO SECTION
+
+====================================================
+
+
+
+Full-width industrial background image/video.
+
+
+
+Dark overlay.
+
+
+
+Large company logo.
+
+
+
+Headline
+
+
+
+"Engineering Reliable Industrial Solutions"
+
+
+
+Sub Heading
+
+
+
+General Contracting
+
+
+
+Equipment Rental
+
+
+
+Industrial Gas Supply
+
+
+
+Material Trading
+
+
+
+Manpower Supply
+
+
+
+Two CTA Buttons
+
+
+
+Get a Quote
+
+
+
+Explore Services
+
+
+
+No statistics.
+
+
+
+No fake counters.
+
+
+
+====================================================
+
+ABOUT US
+
+====================================================
+
+
+
+Professional company overview.
+
+
+
+Mission
+
+
+
+Vision
+
+
+
+Core Values
+
+
+
+Safety
+
+
+
+Quality
+
+
+
+Integrity
+
+
+
+Customer Satisfaction
+
+
+
+No company timeline.
+
+
+
+====================================================
+
+OUR SERVICES
+
+====================================================
+
+
+
+Create premium service cards.
+
+
+
+Include:
+
+
+
+Heavy Equipment Rental
+
+
+
+Industrial Gas Supply
+
+
+
+Material Trading
+
+
+
+Manpower Supply
+
+
+
+Shutdown Support
+
+
+
+Safety Materials
+
+
+
+====================================================
+
+INDUSTRIAL GAS SUPPLY
+
+====================================================
+
+
+
+Create a dedicated premium section.
+
+
+
+Include:
+
+
+
+Argon
+
+
+
+Nitrogen
+
+
+
+Oxygen
+
+
+
+Carbon Dioxide (CO₂)
+
+
+
+Acetylene
+
+
+
+Helium
+
+
+
+Hydrogen
+
+
+
+Compressed Air
+
+
+
+Specialty Calibration Gases
+
+
+
+Mixed Shielding Gases
+
+
+
+Services:
+
+
+
+Cylinder Supply
+
+
+
+Gas Refilling
+
+
+
+Bulk Supply
+
+
+
+Cluster Supply
+
+
+
+Industrial Projects
+
+
+
+Site Delivery
+
+
+
+====================================================
+
+EQUIPMENT
+
+====================================================
+
+
+
+Premium equipment cards.
+
+
+
+Include
+
+
+
+Mobile Cranes
+
+
+
+Boom Lifts
+
+
+
+Scissor Lifts
+
+
+
+Forklifts
+
+
+
+Telehandlers
+
+
+
+Generators
+
+
+
+Air Compressors
+
+
+
+Welding Machines
+
+
+
+Light Towers
+
+
+
+Allow easy future expansion.
+
+
+
+====================================================
+
+WHY CHOOSE GULF VENTURES
+
+====================================================
+
+
+
+Feature cards only.
+
+
+
+No numbers.
+
+
+
+Include:
+
+
+
+Reliable Equipment
+
+
+
+Experienced Team
+
+
+
+Quality Service
+
+
+
+Safety Commitment
+
+
+
+Competitive Pricing
+
+
+
+Fast Response
+
+
+
+On-Time Delivery
+
+
+
+24/7 Support
+
+
+
+Customer Satisfaction
+
+
+
+====================================================
+
+OUR CLIENTS
+
+====================================================
+
+
+
+Create a premium animated logo carousel.
+
+
+
+Use ONLY the following client logos:
+
+
+
+Saudi Aramco
+
+
+
+Marafiq
+
+
+
+Saipem
+
+
+
+SABIC
+
+
+
+GE Oil & Gas
+
+
+
+KAEFER
+
+
+
+Seadrill
+
+
+
+GAS Arabian Services
+
+
+
+Tasnee
+
+
+
+Rowan
+
+
+
+Nabors
+
+
+
+TETRA
+
+
+
+Alkhorayef
+
+
+
+Sadara
+
+
+
+Transocean
+
+
+
+Noble
+
+
+
+SANAD
+
+
+
+Dalma Energy
+
+
+
+Baker Hughes
+
+
+
+Precision Drilling
+
+
+
+Halliburton
+
+
+
+Sipchem
+
+
+
+Saudi Arabian Railways (SAR)
+
+
+
+JGC
+
+
+
+SEPCO
+
+
+
+Ma'aden
+
+
+
+NEOM
+
+
+
+Larsen & Toubro
+
+
+
+Saline Water Conversion Corporation
+
+
+
+Hyundai Engineering
+
+
+
+Anabeeb
+
+
+
+Samsung Engineering
+
+
+
+Arrange them in an elegant continuously moving carousel with white background.
+
+
+
+Use equal spacing.
+
+
+
+Maintain logo proportions.
+
+
+
+Do not distort logos.
+
+
+
+====================================================
+
+CONTACT
+
+====================================================
+
+
+
+Professional Contact Form
+
+
+
+Google Map
+
+
+
+Phone
+
+
+
+Email
+
+
+
+Office Address
+
+
+
+WhatsApp Button
+
+
+
+====================================================
+
+FOOTER
+
+====================================================
+
+
+
+Company Information
+
+
+
+Quick Links
+
+
+
+Services
+
+
+
+Contact
+
+
+
+Social Media
+
+
+
+Copyright
+
+
+
+====================================================
+
+REMOVE COMPLETELY
+
+====================================================
+
+
+
+Do NOT include any of the following anywhere on the website:
+
+
+
+❌ Careers
+
+
+
+❌ Blog
+
+
+
+❌ News
+
+
+
+❌ Testimonials
+
+
+
+❌ Team Members
+
+
+
+❌ Fake Statistics
+
+
+
+❌ Years of Experience Counter
+
+
+
+❌ Projects Counter
+
+
+
+❌ Equipment Counter
+
+
+
+❌ Customer Counter
+
+
+
+❌ Awards
+
+
+
+❌ Certifications
+
+
+
+❌ Standards & Approvals
+
+
+
+❌ Accreditations
+
+
+
+❌ Portfolio
+
+
+
+❌ Projects Gallery
+
+
+
+❌ Sectors We Serve
+
+
+
+❌ Industries We Power
+
+
+
+❌ Project Timeline
+
+
+
+❌ Fake Reviews
+
+
+
+❌ Newsletter
+
+
+
+❌ Placeholder Content
+
+
+
+====================================================
+
+TECHNOLOGY
+
+====================================================
+
+
+
+React
+
+
+
+Next.js
+
+
+
+TypeScript
+
+
+
+Tailwind CSS
+
+
+
+Framer Motion
+
+
+
+Lucide Icons
+
+
+
+Reusable Components
+
+
+
+Clean Folder Structure
+
+
+
+Lazy Loading
+
+
+
+Image Optimization
+
+
+
+SEO Optimized
+
+
+
+Responsive Design
+
+
+
+Accessibility Compliant
+
+
+
+====================================================
+
+IMAGES
+
+====================================================
+
+
+
+Use premium royalty-free industrial images.
+
+
+
+Heavy Equipment
+
+
+
+Mobile Cranes
+
+
+
+Boom Lifts
+
+
+
+Industrial Plants
+
+
+
+Oil & Gas Facilities
+
+
+
+Gas Cylinders
+
+
+
+Industrial Workers
+
+
+
+Engineering
+
+
+
+Construction Projects
+
+
+
+====================================================
+
+CONTENT
+
+====================================================
+
+
+
+Write professional business English.
+
+
+
+Avoid AI buzzwords.
+
+
+
+Avoid Lorem Ipsum.
+
+
+
+Content should sound like a real multinational industrial company.
+
+
+
+====================================================
+
+FINAL RESULT
+
+====================================================
+
+
+
+The website should immediately communicate trust, engineering excellence, professionalism, and reliability.
+
+
+
+It should look like it was designed by a premium web design agency, with clean layouts, sophisticated typography, subtle animations, and outstanding user experience.
+
+
+
+The website should be visually impressive while remaining simple, elegant, and focused on our real business activities.
