@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import companyLogo from '@assets/WhatsApp_Image_2026-07-30_at_12.05.01_1785516069310.jpeg';
 
 const navItems = [
   { id: 'home', label: 'Home' },
@@ -62,10 +63,18 @@ export function Header() {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-3 hover:opacity-85 transition-opacity"
             data-testid="logo-button"
           >
-            GULF VENTURES
+            <img
+              src={companyLogo}
+              alt="Gulf Ventures Logo"
+              className="h-12 w-12 object-contain rounded-md"
+            />
+            <span className="text-lg font-bold tracking-tight text-foreground leading-tight hidden sm:block">
+              GULF VENTURES<br />
+              <span className="text-xs font-semibold text-[#C8102E] tracking-widest uppercase">Trading & Contracting</span>
+            </span>
           </button>
 
           {/* Desktop Navigation */}
