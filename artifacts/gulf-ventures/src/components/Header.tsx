@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import companyLogo from '@assets/WhatsApp_Image_2026-07-30_at_12,05,01-Picsart-BackgroundRemov_1785516492951.jpeg';
+import companyLogo from '@assets/LOGO_GVT_1785678100977.png';
 
 const navItems = [
   { id: 'home', label: 'Home' },
@@ -69,7 +69,7 @@ export function Header() {
             <img
               src={companyLogo}
               alt="Gulf Ventures Logo"
-              className="h-12 w-12 object-contain"
+              className="h-16 w-16 object-contain"
               style={{ mixBlendMode: 'multiply' }}
             />
             <span className="text-lg font-bold tracking-tight text-foreground leading-tight hidden sm:block">
