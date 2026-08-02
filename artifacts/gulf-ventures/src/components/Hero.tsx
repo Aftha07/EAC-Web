@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import heroBg from '@assets/gulf-ventures/hero-bg.jpg';
-import companyLogo from '@assets/WhatsApp_Image_2026-07-30_at_12,05,01-Picsart-BackgroundRemov_1785516492951.jpeg';
+import companyLogo from '@assets/LOGO_GVT_1785677705051.png';
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -33,36 +33,43 @@ export function Hero() {
 
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.0, delay: 0.1, ease: 'easeOut' }}
+            initial={{ opacity: 0, scale: 0.82, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.1, ease: 'easeOut' }}
             className="relative flex justify-center mb-4"
           >
-            {/* Strong light bloom — makes dark logo elements visible against hero */}
+            {/* Subtle red glow halo behind the logo */}
             <div
               className="absolute pointer-events-none"
               style={{
-                width: '340px',
-                height: '340px',
+                width: '420px',
+                height: '420px',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 background:
-                  'radial-gradient(ellipse 60% 65% at 50% 52%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 40%, rgba(200,16,46,0.06) 65%, transparent 80%)',
+                  'radial-gradient(ellipse 55% 60% at 50% 52%, rgba(200,16,46,0.18) 0%, rgba(200,16,46,0.07) 50%, transparent 75%)',
                 zIndex: 0,
               }}
             />
-            <img
-              src={companyLogo}
-              alt="Gulf Ventures Logo"
-              className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain"
-              style={{
-                mixBlendMode: 'screen',
-                filter:
-                  'drop-shadow(0 0 28px rgba(200,16,46,0.8)) drop-shadow(0 0 70px rgba(200,16,46,0.35)) brightness(1.3) contrast(1.15)',
-                zIndex: 1,
-              }}
-            />
+            {/* Floating + subtle pulse wrapper */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
+              style={{ zIndex: 1 }}
+            >
+              <motion.img
+                src={companyLogo}
+                alt="Gulf Ventures Logo"
+                className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain"
+                animate={{ filter: [
+                  'drop-shadow(0 0 18px rgba(200,16,46,0.55)) drop-shadow(0 0 40px rgba(200,16,46,0.25))',
+                  'drop-shadow(0 0 32px rgba(200,16,46,0.90)) drop-shadow(0 0 70px rgba(200,16,46,0.45))',
+                  'drop-shadow(0 0 18px rgba(200,16,46,0.55)) drop-shadow(0 0 40px rgba(200,16,46,0.25))',
+                ]}}
+                transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.div>
           </motion.div>
 
           {/* Company wordmark */}
