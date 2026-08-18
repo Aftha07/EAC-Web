@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Construction, FlaskConical, Package, HardHat, Wrench, ShieldCheck } from 'lucide-react';
-import serviceEquipment from '@assets/generated_images/service-heavy-equipment.jpg';
+import serviceEquipment from '@assets/generated_images/service-heavy-equipment-reference-inspired.jpg';
 import serviceGas from '@assets/generated_images/service-industrial-gas.jpg';
 import serviceTrading from '@assets/generated_images/service-material-trading.jpg';
 import serviceManpower from '@assets/generated_images/service-manpower.jpg';
@@ -77,13 +77,20 @@ export function Services() {
               className="group relative overflow-hidden bg-card border-2 border-border hover:border-primary transition-all"
               data-testid={`service-card-${service.title.toLowerCase().replace(/\s+/g, '-')}`}
             >
-              {/* Background Image */}
-              <div className="relative h-64 overflow-hidden">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${service.image})` }}
+              {/* Service Image */}
+              <div className={`relative h-64 overflow-hidden ${service.imageFit === 'contain' ? 'bg-[#f4f5f6]' : ''}`}>
+                <img
+                  src={service.image}
+                  alt={`${service.title} services`}
+                  className={`absolute inset-0 h-full w-full transition-transform duration-500 ${
+                    service.imageFit === 'contain'
+                      ? 'object-contain p-2 group-hover:scale-[1.02]'
+                      : 'object-cover group-hover:scale-110'
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                {service.imageFit !== 'contain' && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                )}
                 
                 {/* Icon */}
                 <div className="absolute top-6 left-6">
