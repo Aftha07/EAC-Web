@@ -27,7 +27,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">GULF VENTURES</h3>
+            <h3 className="text-2xl font-bold mb-4">EASTERN ALLIANCE COMPANY</h3>
             <p className="text-white/80 leading-relaxed mb-4">
               Leading industrial contracting company serving Saudi Arabia's energy sector with 
               reliable equipment, materials, and services.
@@ -86,7 +86,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
           <p className="text-center text-white/70 text-sm">
-            &copy; 2025 Gulf Ventures Trading and Contracting LTD. All Rights Reserved.
+            &copy; 2025 Eastern Alliance Company. All Rights Reserved.
           </p>
         </div>
       </div>

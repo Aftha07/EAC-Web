@@ -36,7 +36,7 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            About Gulf Ventures
+            About Eastern Alliance Company
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8" />
         </motion.div>

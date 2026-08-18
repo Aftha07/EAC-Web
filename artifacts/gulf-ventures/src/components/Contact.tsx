@@ -248,7 +248,7 @@ export function Contact() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Gulf Ventures Location"
+                 title="Eastern Alliance Company Location"
               />
             </div>
           </motion.div>

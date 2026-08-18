@@ -68,12 +68,12 @@ export function Header() {
           >
             <img
               src={companyLogo}
-              alt="Gulf Ventures Logo"
+              alt="Eastern Alliance Company Logo"
               className="h-16 w-16 object-contain"
               style={{ mixBlendMode: 'multiply' }}
             />
             <span className="text-lg font-bold tracking-tight text-foreground leading-tight hidden sm:block">
-              GULF VENTURES<br />
+              EASTERN ALLIANCE COMPANY<br />
               <span className="text-xs font-semibold text-[#C8102E] tracking-widest uppercase">Trading & Contracting</span>
             </span>
           </button>

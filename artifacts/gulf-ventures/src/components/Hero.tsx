@@ -60,7 +60,7 @@ export function Hero() {
             >
               <motion.img
                 src={companyLogo}
-                alt="Gulf Ventures Logo"
+               alt="Eastern Alliance Company Logo"
                 className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain"
                 animate={{ filter: [
                   'drop-shadow(0 0 18px rgba(200,16,46,0.55)) drop-shadow(0 0 40px rgba(200,16,46,0.25))',
@@ -84,7 +84,7 @@ export function Hero() {
               textShadow: '0 2px 40px rgba(0,0,0,0.6)',
             }}
           >
-            GULF VENTURES
+            EASTERN ALLIANCE COMPANY
           </motion.h1>
 
           <motion.p
