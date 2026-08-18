@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FlaskConical, Truck } from 'lucide-react';
-import gasCylinders from '@assets/generated_images/gas-cylinders.jpg';
+import gasCylinders from '@assets/gulf-ventures/service-gas.jpg';
 import gasBulkStorage from '@assets/generated_images/gas-bulk-storage.jpg';
 import gasDelivery from '@assets/generated_images/gas-delivery.jpg';
 
@@ -57,8 +57,8 @@ export function GasSupply() {
               <div className="col-span-2 relative overflow-hidden border-2 border-border bg-background shadow-sm">
                 <img
                   src={gasCylinders}
-                  alt="Color-coded industrial gas cylinders"
-                  className="h-72 md:h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+                  alt="Full industrial gas cylinders labeled Argon, Nitrogen, and Oxygen"
+                  className="h-72 md:h-80 w-full bg-[#f1f3f4] object-contain transition-transform duration-500 hover:scale-[1.02]"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-5 pb-5 pt-16">
                   <p className="text-white font-bold text-lg">Certified cylinder supply</p>
