@@ -1,0 +1,1 @@
+- [Artifact build environment](build-environment.md) — Vite builds for the web artifact require both `PORT` and `BASE_PATH` to be set.

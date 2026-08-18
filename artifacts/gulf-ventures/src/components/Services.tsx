@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Construction, FlaskConical, Package, HardHat, Wrench, ShieldCheck } from 'lucide-react';
-import serviceEquipment from '@assets/gulf-ventures/service-equipment.jpg';
-import serviceGas from '@assets/gulf-ventures/service-gas.jpg';
-import serviceTrading from '@assets/gulf-ventures/service-trading.jpg';
-import serviceManpower from '@assets/gulf-ventures/service-manpower.jpg';
-import serviceShutdown from '@assets/gulf-ventures/service-shutdown.jpg';
-import serviceSafety from '@assets/gulf-ventures/service-safety.jpg';
+import serviceEquipment from '@assets/generated_images/service-heavy-equipment.jpg';
+import serviceGas from '@assets/generated_images/service-industrial-gas.jpg';
+import serviceTrading from '@assets/generated_images/service-material-trading.jpg';
+import serviceManpower from '@assets/generated_images/service-manpower.jpg';
+import serviceShutdown from '@assets/generated_images/service-shutdown.jpg';
+import serviceSafety from '@assets/generated_images/service-safety.jpg';
 
 const services = [
   {
