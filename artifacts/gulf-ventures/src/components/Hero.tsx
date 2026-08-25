@@ -90,8 +90,6 @@ export function Hero() {
     <section
       id="home"
       className="relative min-h-screen w-full overflow-hidden bg-[#071323] text-white"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <AnimatePresence initial={false} mode="sync">
         <motion.div
@@ -100,7 +98,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 1.1 }, scale: { duration: 7, ease: 'easeOut' } }}
+          transition={{ opacity: { duration: 0.6 }, scale: { duration: 3, ease: 'easeOut' } }}
         >
           <img
             src={activeActivity.image}
