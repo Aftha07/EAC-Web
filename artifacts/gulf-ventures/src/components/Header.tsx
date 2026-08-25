@@ -59,7 +59,7 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('home')}
@@ -69,7 +69,7 @@ export function Header() {
             <img
               src={companyLogo}
               alt="Eastern Alliance Company"
-              className="h-[4.5rem] w-auto max-w-[15rem] object-contain"
+              className="h-[6.5rem] w-auto max-w-[18rem] object-contain"
             />
           </button>
 
