@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroBg from '@assets/gulf-ventures/hero-bg.jpg';
@@ -65,18 +65,15 @@ const SLIDE_DURATION = 3000;
 
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const activeActivity = activities[activeIndex];
 
   useEffect(() => {
-    if (isPaused) return;
-
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % activities.length);
     }, SLIDE_DURATION);
 
     return () => window.clearInterval(timer);
-  }, [isPaused]);
+  }, []);
 
   const goToActivity = (index: number) => {
     setActiveIndex((index + activities.length) % activities.length);
@@ -89,7 +86,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full overflow-hidden bg-[#071323] text-white"
+      className="group relative min-h-screen w-full overflow-hidden bg-[#071323] text-white"
     >
       <AnimatePresence initial={false} mode="sync">
         <motion.div
@@ -180,65 +177,23 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-5">
-          <div className="flex items-center justify-between gap-5">
-            <div className="flex min-w-0 flex-1 gap-2 sm:gap-3">
-              {activities.map((activity, index) => (
-                <button
-                  key={activity.label}
-                  type="button"
-                  onClick={() => goToActivity(index)}
-                  className="group min-w-0 flex-1 text-left"
-                  aria-label={`Show ${activity.label}`}
-                  aria-current={index === activeIndex}
-                >
-                  <div className="mb-3 h-1 overflow-hidden bg-white/25">
-                    <motion.div
-                      className="h-full bg-[#C8102E]"
-                      initial={false}
-                      animate={{ width: index === activeIndex ? '100%' : index < activeIndex ? '100%' : '0%' }}
-                      transition={{ duration: index === activeIndex ? SLIDE_DURATION / 1000 : 0.25, ease: 'linear' }}
-                    />
-                  </div>
-                  <span
-                    className={`hidden text-[10px] font-bold uppercase tracking-[0.12em] transition-colors sm:block ${
-                      index === activeIndex ? 'text-white' : 'text-white/45 group-hover:text-white/80'
-                    }`}
-                  >
-                    {activity.label}
-                  </span>
-                  <span className="text-[10px] text-white/45 sm:hidden">{activity.number}</span>
-                </button>
-              ))}
-            </div>
-
-            <div className="flex shrink-0 items-center gap-1">
-              <button
-                type="button"
-                onClick={() => goToActivity(activeIndex - 1)}
-                className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/75 transition-colors hover:border-white hover:text-white"
-                aria-label="Previous activity"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => goToActivity(activeIndex + 1)}
-                className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/75 transition-colors hover:border-white hover:text-white"
-                aria-label="Next activity"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsPaused((paused) => !paused)}
-                className="ml-2 flex h-9 w-9 items-center justify-center text-white/60 transition-colors hover:text-white"
-                aria-label={isPaused ? 'Play activity slideshow' : 'Pause activity slideshow'}
-              >
-                {isPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
-              </button>
-            </div>
-          </div>
+        <div className="pointer-events-none absolute right-5 top-1/2 z-20 flex -translate-y-1/2 gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:right-8 lg:right-12">
+          <button
+            type="button"
+            onClick={() => goToActivity(activeIndex - 1)}
+            className="pointer-events-auto flex h-12 w-12 items-center justify-center border border-white/45 bg-black/20 text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white hover:text-[#071323]"
+            aria-label="Previous activity"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => goToActivity(activeIndex + 1)}
+            className="pointer-events-auto flex h-12 w-12 items-center justify-center border border-white/45 bg-black/20 text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white hover:text-[#071323]"
+            aria-label="Next activity"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>
