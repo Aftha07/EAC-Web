@@ -24,18 +24,18 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "PORT=5000 BASE_PATH=/ pnpm --filter @workspace/gulf-ventures dev"
-waitForPort = 5000
+args = "PORT=20332 BASE_PATH=/ pnpm --filter @workspace/gulf-ventures dev"
+waitForPort = 20332
 
 [workflows.workflow.metadata]
 outputType = "webview"
 
 [[ports]]
-localPort = 5000
+localPort = 20332
 externalPort = 80
 
 [[ports]]
-localPort = 20332
+localPort = 5000
 externalPort = 3001
 
 [deployment]
