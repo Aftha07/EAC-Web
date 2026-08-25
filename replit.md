@@ -1,15 +1,17 @@
-# [Project name]
+# Eastern Alliance Company
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Marketing website for Eastern Alliance Company, showcasing equipment rental services and helping customers request quotes.
 
 ## Run & Operate
 
+- `PORT=20332 BASE_PATH=/ pnpm --filter @workspace/gulf-ventures dev` — run the frontend website
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required frontend env: `PORT` and `BASE_PATH`
+- Required API env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
