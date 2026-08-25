@@ -42,6 +42,7 @@ export function Footer() {
               {quickLinks.map((link) => (
                 <button
                   key={link.id}
+                  type="button"
                   onClick={() => scrollToSection(link.id)}
                   className="block text-white/80 hover:text-primary transition-colors"
                   data-testid={`footer-link-${link.id}`}

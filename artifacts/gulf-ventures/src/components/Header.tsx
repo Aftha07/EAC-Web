@@ -22,11 +22,12 @@ export function Header() {
       
       // Update active section based on scroll position
       const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
+      const activeLine = headerHeight + 1;
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
+        if (section && section.getBoundingClientRect().top <= activeLine) {
           setActiveSection(navItems[i].id);
           break;
         }
@@ -34,6 +35,7 @@ export function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -63,6 +65,7 @@ export function Header() {
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <button 
+            type="button"
             onClick={() => scrollToSection('home')}
             className="flex items-center gap-3 hover:opacity-85 transition-opacity"
             data-testid="logo-button"
@@ -79,6 +82,7 @@ export function Header() {
             {navItems.map((item) => (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-medium tracking-wide uppercase transition-colors relative ${
                   activeSection === item.id 
@@ -94,6 +98,7 @@ export function Header() {
               </button>
             ))}
             <Button 
+              type="button"
               onClick={() => scrollToSection('contact')}
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wide"
@@ -105,6 +110,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             data-testid="button-mobile-menu"
@@ -121,6 +127,7 @@ export function Header() {
             {navItems.map((item) => (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left text-base font-medium uppercase tracking-wide py-2 transition-colors ${
                   activeSection === item.id 
@@ -133,6 +140,7 @@ export function Header() {
               </button>
             ))}
             <Button 
+              type="button"
               onClick={() => scrollToSection('contact')}
               size="lg"
               className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wide"
