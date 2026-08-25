@@ -74,7 +74,7 @@ export function Header() {
             />
             <span className="text-lg font-bold tracking-tight text-foreground leading-tight hidden sm:block">
               EASTERN ALLIANCE COMPANY<br />
-              <span className="text-xs font-semibold text-[#C8102E] tracking-widest uppercase">Trading & Contracting</span>
+              <span className="text-xs font-semibold text-[#C8102E] tracking-widest uppercase">General Contracting ltd.</span>
             </span>
           </button>
 
@@ -118,7 +118,6 @@ export function Header() {
           </button>
         </div>
       </div>
-
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-border">
