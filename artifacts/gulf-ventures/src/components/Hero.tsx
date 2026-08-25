@@ -61,7 +61,7 @@ const activities = [
   },
 ];
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 3000;
 
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
