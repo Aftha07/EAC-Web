@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import companyLogo from '@assets/LOGO_GVT_1785678100977.png';
+import companyLogo from '@assets/PHOTO-2026-08-25-17-38-23-Picsart-BackgroundRemover_1787679117327.jpg';
 
 const navItems = [
   { id: 'home', label: 'Home' },
@@ -68,14 +68,9 @@ export function Header() {
           >
             <img
               src={companyLogo}
-              alt="Eastern Alliance Company Logo"
-              className="h-16 w-16 object-contain"
-              style={{ mixBlendMode: 'multiply' }}
+              alt="Eastern Alliance Company"
+              className="h-[4.5rem] w-auto max-w-[15rem] object-contain"
             />
-            <span className="text-lg font-bold tracking-tight text-foreground leading-tight hidden sm:block">
-              EASTERN ALLIANCE COMPANY<br />
-              <span className="text-xs font-semibold text-[#C8102E] tracking-widest uppercase">General Contracting ltd.</span>
-            </span>
           </button>
 
           {/* Desktop Navigation */}

@@ -29,12 +29,9 @@ export function Footer() {
           <div>
             <h3 className="text-2xl font-bold mb-4">EASTERN ALLIANCE COMPANY</h3>
             <p className="text-white/80 leading-relaxed mb-4">
-              Leading industrial contracting company serving Saudi Arabia's energy sector with 
-              reliable equipment, materials, and services.
+              Eastern Alliance Company provides reliable equipment, materials, and services
+              for Saudi Arabia&apos;s energy and industrial sectors.
             </p>
-            <div className="space-y-2 text-sm text-white/70">
-              <p className="font-medium text-white/90">Trading and Contracting LTD.</p>
-            </div>
           </div>
 
           {/* Quick Links */}

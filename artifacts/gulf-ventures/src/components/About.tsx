@@ -68,7 +68,7 @@ export function About() {
               To be recognized as the most trusted and reliable industrial partner in the region, 
               known for our unwavering commitment to safety, quality, and customer satisfaction. 
               We aspire to set the industry benchmark for operational excellence and innovation 
-              in industrial contracting and support services.
+              in industrial solutions and support services.
             </p>
           </motion.div>
         </div>
