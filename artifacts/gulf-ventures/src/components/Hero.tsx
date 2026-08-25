@@ -65,6 +65,7 @@ const SLIDE_DURATION = 3000;
 
 export function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [autoPlayResetKey, setAutoPlayResetKey] = useState(0);
   const activeActivity = activities[activeIndex];
 
   useEffect(() => {
@@ -73,14 +74,24 @@ export function Hero() {
     }, SLIDE_DURATION);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [autoPlayResetKey]);
 
   const goToActivity = (index: number) => {
     setActiveIndex((index + activities.length) % activities.length);
+    setAutoPlayResetKey((current) => current + 1);
   };
 
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({
+        top: Math.max(0, elementPosition),
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (

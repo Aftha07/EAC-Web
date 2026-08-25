@@ -40,10 +40,11 @@ export function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
-      const elementPosition = element.offsetTop - offset;
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight;
       window.scrollTo({
-        top: elementPosition,
+        top: Math.max(0, elementPosition),
         behavior: 'smooth'
       });
       setIsMobileMenuOpen(false);
