@@ -1,183 +1,247 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroBg from '@assets/gulf-ventures/hero-bg.jpg';
-import companyLogo from '@assets/LOGO_GVT_1785677705051.png';
+import serviceEquipment from '@assets/generated_images/service-heavy-equipment-reference-inspired.jpg';
+import serviceGas from '@assets/generated_images/service-industrial-gas.jpg';
+import serviceTrading from '@assets/generated_images/service-material-trading.jpg';
+import serviceManpower from '@assets/generated_images/service-manpower.jpg';
+import serviceShutdown from '@assets/generated_images/service-shutdown.jpg';
+import serviceSafety from '@assets/generated_images/service-safety.jpg';
+
+const activities = [
+  {
+    number: '01',
+    label: 'Equipment Rental',
+    title: 'Powering your project with the right equipment.',
+    description:
+      'Reliable cranes, lifts, forklifts, generators, and specialist equipment, ready when your operation needs them.',
+    image: serviceEquipment,
+  },
+  {
+    number: '02',
+    label: 'Industrial Gas Supply',
+    title: 'Industrial gases delivered with confidence.',
+    description:
+      'Certified argon, nitrogen, oxygen, and specialty gases with dependable site delivery across the Kingdom.',
+    image: serviceGas,
+  },
+  {
+    number: '03',
+    label: 'Material Trading',
+    title: 'The materials that keep industry moving.',
+    description:
+      'Industrial materials, steel products, and construction supplies sourced for demanding projects.',
+    image: serviceTrading,
+  },
+  {
+    number: '04',
+    label: 'Manpower Supply',
+    title: 'Skilled people for critical operations.',
+    description:
+      'Experienced technical teams and workforce solutions built around safety, capability, and performance.',
+    image: serviceManpower,
+  },
+  {
+    number: '05',
+    label: 'Shutdown Support',
+    title: 'Turnaround support without compromise.',
+    description:
+      'Coordinated shutdown and maintenance support that helps plants return to operation safely and on schedule.',
+    image: serviceShutdown,
+  },
+  {
+    number: '06',
+    label: 'Safety Materials',
+    title: 'Safety equipment for every worksite.',
+    description:
+      'A complete range of PPE and safety materials for teams working in demanding industrial environments.',
+    image: serviceSafety,
+  },
+];
+
+const SLIDE_DURATION = 6000;
 
 export function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeActivity = activities[activeIndex];
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % activities.length);
+    }, SLIDE_DURATION);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+
+  const goToActivity = (index: number) => {
+    setActiveIndex((index + activities.length) % activities.length);
+  };
+
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden">
-      {/* Background */}
+    <section
+      id="home"
+      className="relative min-h-screen w-full overflow-hidden bg-[#071323] text-white"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <AnimatePresence initial={false} mode="sync">
+        <motion.div
+          key={activeActivity.image}
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ opacity: { duration: 1.1 }, scale: { duration: 7, ease: 'easeOut' } }}
+        >
+          <img
+            src={activeActivity.image}
+            alt={`${activeActivity.label} by Eastern Alliance Company`}
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+
       <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2.2, ease: 'easeOut' }}
-      >
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/62 to-black/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
-      </motion.div>
+        className="absolute inset-0"
+        animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+        transition={{ duration: 16, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          mixBlendMode: 'soft-light',
+          opacity: 0.22,
+        }}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,13,26,.94)_0%,rgba(4,17,34,.78)_38%,rgba(4,15,29,.25)_75%,rgba(4,15,29,.44)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(2,10,20,.9)_0%,transparent_42%,rgba(1,7,15,.18)_100%)]" />
 
-      {/* Full-height flex column — header offset via pt, bottom stats at flex-end */}
-      <div className="relative z-10 flex flex-col items-center min-h-screen pt-20">
-        
-        {/* Centred hero body */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-6 w-full max-w-3xl mx-auto">
-
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.82, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.1, ease: 'easeOut' }}
-            className="relative flex justify-center mb-4"
-          >
-            {/* Subtle red glow halo behind the logo */}
-            <div
-              className="absolute pointer-events-none"
-              style={{
-                width: '420px',
-                height: '420px',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                background:
-                  'radial-gradient(ellipse 55% 60% at 50% 52%, rgba(200,16,46,0.18) 0%, rgba(200,16,46,0.07) 50%, transparent 75%)',
-                zIndex: 0,
-              }}
-            />
-            {/* Floating + subtle pulse wrapper */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-between px-5 pb-7 pt-28 sm:px-8 lg:px-12">
+        <div className="flex flex-1 items-center py-16 sm:py-20">
+          <div className="w-full max-w-2xl">
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
-              style={{ zIndex: 1 }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f2b2bd]"
             >
-              <motion.img
-                src={companyLogo}
-               alt="Eastern Alliance Company Logo"
-                className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain"
-                animate={{ filter: [
-                  'drop-shadow(0 0 18px rgba(200,16,46,0.55)) drop-shadow(0 0 40px rgba(200,16,46,0.25))',
-                  'drop-shadow(0 0 32px rgba(200,16,46,0.90)) drop-shadow(0 0 70px rgba(200,16,46,0.45))',
-                  'drop-shadow(0 0 18px rgba(200,16,46,0.55)) drop-shadow(0 0 40px rgba(200,16,46,0.25))',
-                ]}}
-                transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
-              />
+              <span className="h-px w-10 bg-[#C8102E]" />
+              Eastern Alliance Company
             </motion.div>
-          </motion.div>
 
-          {/* Company wordmark */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.35 }}
-            className="font-black text-white leading-none mb-1"
-            style={{
-              fontSize: 'clamp(2rem, 5.5vw, 3.8rem)',
-              letterSpacing: '-0.01em',
-              textShadow: '0 2px 40px rgba(0,0,0,0.6)',
-            }}
-          >
-            EASTERN ALLIANCE COMPANY
-          </motion.h1>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeActivity.label}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -18 }}
+                transition={{ duration: 0.55, ease: 'easeOut' }}
+              >
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#ef334f]">
+                  {activeActivity.number} / 06 &nbsp; {activeActivity.label}
+                </p>
+                <h1 className="max-w-xl font-[var(--font-heading)] text-5xl font-extrabold leading-[0.94] tracking-tight text-white sm:text-7xl lg:text-[5.5rem]">
+                  {activeActivity.title}
+                </h1>
+                <p className="mt-7 max-w-lg text-base leading-7 text-white/72 sm:text-lg">
+                  {activeActivity.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.48 }}
-            className="font-semibold text-[#C8102E] uppercase tracking-[0.28em] mb-4"
-            style={{ fontSize: 'clamp(0.55rem, 1.4vw, 0.78rem)' }}
-          >
-            Trading &nbsp;&amp;&nbsp; Contracting LTD.
-          </motion.p>
-
-          {/* Ornamental divider */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex items-center gap-3 mb-4"
-          >
-            <div className="w-14 h-px bg-gradient-to-r from-transparent to-[#C8102E]/65" />
-            <div className="w-1 h-1 rounded-full bg-[#C8102E]" />
-            <div className="w-5 h-px bg-[#C8102E]" />
-            <div className="w-1 h-1 rounded-full bg-[#C8102E]" />
-            <div className="w-14 h-px bg-gradient-to-l from-transparent to-[#C8102E]/65" />
-          </motion.div>
-
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.7 }}
-            className="text-white/80 font-light tracking-wide mb-1"
-            style={{ fontSize: 'clamp(0.85rem, 1.9vw, 1.1rem)' }}
-          >
-            Engineering Reliable Industrial Solutions
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.75, delay: 0.82 }}
-            className="text-white/35 text-[9px] sm:text-[11px] tracking-[0.16em] uppercase mb-6"
-          >
-            General Contracting · Equipment Rental · Industrial Gas Supply · Material Trading
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.92 }}
-            className="flex flex-col sm:flex-row gap-3 justify-center items-center"
-          >
-            <Button
-              onClick={() => scrollToSection('contact')}
-              size="lg"
-              className="bg-[#C8102E] hover:bg-[#a30d25] text-white font-bold uppercase tracking-widest text-xs px-9 py-4 h-auto rounded-none shadow-lg shadow-[#C8102E]/25 transition-all duration-300"
-              data-testid="cta-get-quote-hero"
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mt-9 flex flex-wrap gap-3"
             >
-              Get a Quote
-            </Button>
-            <Button
-              onClick={() => scrollToSection('services')}
-              size="lg"
-              variant="outline"
-              className="border border-white/35 text-white hover:border-white/65 hover:bg-white/8 font-medium uppercase tracking-widest text-xs px-9 py-4 h-auto bg-transparent rounded-none transition-all duration-300"
-              data-testid="cta-explore-services"
-            >
-              Explore Services
-            </Button>
-          </motion.div>
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="h-14 rounded-none bg-[#C8102E] px-7 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-xl shadow-black/20 hover:bg-[#a30d25]"
+                data-testid="cta-get-quote-hero"
+              >
+                Get a Quote <ArrowRight className="ml-3 h-4 w-4" />
+              </Button>
+              <Button
+                onClick={() => scrollToSection('services')}
+                variant="outline"
+                className="h-14 rounded-none border-white/45 bg-white/5 px-7 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-[#071323]"
+                data-testid="cta-explore-services"
+              >
+                Explore Activities
+              </Button>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Stat bar — bottom of the flex column */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="w-full bg-black/55 backdrop-blur-sm border-t border-white/10"
-        >
-          <div className="max-w-3xl mx-auto px-4 py-3 grid grid-cols-3 divide-x divide-white/10">
-            {[
-              { value: '15+', label: 'Years of Excellence' },
-              { value: '500+', label: 'Projects Delivered' },
-              { value: 'KSA', label: 'Kingdom of Saudi Arabia' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center px-3">
-                <p className="text-[#C8102E] font-bold text-base sm:text-lg leading-none mb-0.5">{stat.value}</p>
-                <p className="text-white/45 text-[9px] sm:text-[10px] uppercase tracking-widest">{stat.label}</p>
-              </div>
-            ))}
+        <div className="border-t border-white/20 pt-5">
+          <div className="flex items-center justify-between gap-5">
+            <div className="flex min-w-0 flex-1 gap-2 sm:gap-3">
+              {activities.map((activity, index) => (
+                <button
+                  key={activity.label}
+                  type="button"
+                  onClick={() => goToActivity(index)}
+                  className="group min-w-0 flex-1 text-left"
+                  aria-label={`Show ${activity.label}`}
+                  aria-current={index === activeIndex}
+                >
+                  <div className="mb-3 h-1 overflow-hidden bg-white/25">
+                    <motion.div
+                      className="h-full bg-[#C8102E]"
+                      initial={false}
+                      animate={{ width: index === activeIndex ? '100%' : index < activeIndex ? '100%' : '0%' }}
+                      transition={{ duration: index === activeIndex ? SLIDE_DURATION / 1000 : 0.25, ease: 'linear' }}
+                    />
+                  </div>
+                  <span
+                    className={`hidden text-[10px] font-bold uppercase tracking-[0.12em] transition-colors sm:block ${
+                      index === activeIndex ? 'text-white' : 'text-white/45 group-hover:text-white/80'
+                    }`}
+                  >
+                    {activity.label}
+                  </span>
+                  <span className="text-[10px] text-white/45 sm:hidden">{activity.number}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex shrink-0 items-center gap-1">
+              <button
+                type="button"
+                onClick={() => goToActivity(activeIndex - 1)}
+                className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/75 transition-colors hover:border-white hover:text-white"
+                aria-label="Previous activity"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => goToActivity(activeIndex + 1)}
+                className="flex h-9 w-9 items-center justify-center border border-white/25 text-white/75 transition-colors hover:border-white hover:text-white"
+                aria-label="Next activity"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsPaused((paused) => !paused)}
+                className="ml-2 flex h-9 w-9 items-center justify-center text-white/60 transition-colors hover:text-white"
+                aria-label={isPaused ? 'Play activity slideshow' : 'Pause activity slideshow'}
+              >
+                {isPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
+              </button>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

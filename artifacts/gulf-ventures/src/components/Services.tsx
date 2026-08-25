@@ -78,19 +78,13 @@ export function Services() {
               data-testid={`service-card-${service.title.toLowerCase().replace(/\s+/g, '-')}`}
             >
               {/* Service Image */}
-              <div className={`relative h-64 overflow-hidden ${service.imageFit === 'contain' ? 'bg-[#f4f5f6]' : ''}`}>
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={service.image}
                   alt={`${service.title} services`}
-                  className={`absolute inset-0 h-full w-full transition-transform duration-500 ${
-                    service.imageFit === 'contain'
-                      ? 'object-contain p-2 group-hover:scale-[1.02]'
-                      : 'object-cover group-hover:scale-110'
-                  }`}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {service.imageFit !== 'contain' && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 
                 {/* Icon */}
                 <div className="absolute top-6 left-6">
