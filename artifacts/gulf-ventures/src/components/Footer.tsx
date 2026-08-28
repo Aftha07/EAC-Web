@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { navigateTo, scrollToSection } from '@/lib/navigation';
 
 const quickLinks = [
   { id: 'home', label: 'Home' },
@@ -9,16 +10,12 @@ const quickLinks = [
 ];
 
 export function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
+  const handleSectionNavigation = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      navigateTo('/');
+      window.setTimeout(() => scrollToSection(sectionId), 120);
+    } else {
+      scrollToSection(sectionId);
     }
   };
 
@@ -43,7 +40,7 @@ export function Footer() {
                 <button
                   key={link.id}
                   type="button"
-                  onClick={() => scrollToSection(link.id)}
+                  onClick={() => handleSectionNavigation(link.id)}
                   className="block text-white/80 hover:text-primary transition-colors"
                   data-testid={`footer-link-${link.id}`}
                 >

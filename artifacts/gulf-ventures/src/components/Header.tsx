@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { navigateTo, scrollToSection } from '@/lib/navigation';
 import companyLogo from '@assets/EAC_LOGO-Picsart-BackgroundRemover_1787941651782.png';
 
 const navItems = [
@@ -39,18 +40,14 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({
-        top: Math.max(0, elementPosition),
-        behavior: 'smooth'
-      });
-      setIsMobileMenuOpen(false);
+  const handleSectionNavigation = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      navigateTo('/');
+      window.setTimeout(() => scrollToSection(sectionId), 120);
+    } else {
+      scrollToSection(sectionId);
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -66,7 +63,7 @@ export function Header() {
           {/* Logo */}
           <button 
             type="button"
-            onClick={() => scrollToSection('home')}
+            onClick={() => handleSectionNavigation('home')}
             className="flex items-center gap-3 hover:opacity-85 transition-opacity"
             data-testid="logo-button"
           >
@@ -83,7 +80,7 @@ export function Header() {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleSectionNavigation(item.id)}
                 className={`text-sm font-medium tracking-wide uppercase transition-colors relative ${
                   activeSection === item.id 
                     ? 'text-primary' 
@@ -99,7 +96,7 @@ export function Header() {
             ))}
             <Button 
               type="button"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => handleSectionNavigation('contact')}
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wide"
               data-testid="cta-get-quote-header"
@@ -128,7 +125,7 @@ export function Header() {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleSectionNavigation(item.id)}
                 className={`block w-full text-left text-base font-medium uppercase tracking-wide py-2 transition-colors ${
                   activeSection === item.id 
                     ? 'text-primary' 
@@ -141,7 +138,7 @@ export function Header() {
             ))}
             <Button 
               type="button"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => handleSectionNavigation('contact')}
               size="lg"
               className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wide"
               data-testid="cta-get-quote-mobile"
