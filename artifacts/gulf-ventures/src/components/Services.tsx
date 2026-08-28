@@ -1,6 +1,6 @@
 import { ArrowDownRight, ArrowRight, Compass, Crosshair, Route, ShieldCheck } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { navigateTo } from '@/lib/navigation';
+import { scrollToSection } from '@/lib/navigation';
 import { services } from '@/lib/service-data';
 
 const reveal: Variants = {
@@ -17,7 +17,7 @@ export function Services() {
   const supporting = services.slice(1);
 
   const openService = (slug: string) => {
-    navigateTo(`/services/${slug}`);
+    scrollToSection(`service-${slug}`);
   };
 
   return (
@@ -157,7 +157,7 @@ export function Services() {
           </p>
           <button
             type="button"
-            onClick={() => navigateTo('/services/heavy-equipment-rental')}
+              onClick={() => openService(featured.slug)}
             className="service-link-line flex items-center gap-3 pb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#f4f0e7]"
           >
             Explore all capabilities <ArrowRight className="h-4 w-4 text-[#e0b974]" />

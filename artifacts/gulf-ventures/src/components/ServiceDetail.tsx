@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Check, ChevronRight, MapPin, MoveUpRight } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { navigateTo, scrollToSection } from '@/lib/navigation';
+import { scrollToSection } from '@/lib/navigation';
 import type { ServiceDetail as ServiceDetailModel } from '@/lib/service-data';
 import { services } from '@/lib/service-data';
 
@@ -18,11 +18,6 @@ const fadeUp: Variants = {
 };
 
 function goToQuote() {
-  if (window.location.pathname !== '/') {
-    navigateTo('/');
-    window.setTimeout(() => scrollToSection('contact'), 120);
-    return;
-  }
   scrollToSection('contact');
 }
 
@@ -32,7 +27,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
   const nextService = services[(currentIndex + 1) % services.length];
 
   return (
-    <main className="min-h-[100dvh] bg-[#f0ede5] text-[#102334]">
+    <article id={`service-${service.slug}`} className="min-h-[100dvh] bg-[#f0ede5] text-[#102334]">
       <section className="relative overflow-hidden bg-[#102334] pb-0 pt-28 text-[#f4f0e7] sm:pt-32">
         <div className="industrial-noise pointer-events-none absolute inset-0" />
         <div className="industrial-grid pointer-events-none absolute inset-0 opacity-[0.12]" />
@@ -45,7 +40,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           >
             <button
               type="button"
-              onClick={() => navigateTo('/')}
+              onClick={() => scrollToSection('services')}
               className="group flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#c3ccd0] transition-colors hover:text-[#e0b974]"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -233,7 +228,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 sm:flex-row sm:items-center sm:px-8 lg:px-12">
           <button
             type="button"
-            onClick={() => navigateTo('/')}
+            onClick={() => scrollToSection('services')}
             className="group flex items-center gap-3 text-xs uppercase tracking-[0.15em] text-[#b6c0c7] transition-colors hover:text-[#e0b974]"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -241,7 +236,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </button>
           <button
             type="button"
-            onClick={() => navigateTo(`/services/${nextService.slug}`)}
+            onClick={() => scrollToSection(`service-${nextService.slug}`)}
             className="group flex items-center gap-3 text-right text-xs uppercase tracking-[0.15em] text-[#b6c0c7] transition-colors hover:text-[#e0b974]"
           >
             Next activity: {nextService.shortTitle}
@@ -249,6 +244,6 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </button>
         </div>
       </section>
-    </main>
+    </article>
   );
 }
