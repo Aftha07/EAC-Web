@@ -1,11 +1,15 @@
 import { ArrowDownRight, ArrowRight, Compass, Crosshair, Route, ShieldCheck } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { navigateTo } from '@/lib/navigation';
 import { services } from '@/lib/service-data';
 
-const reveal = {
+const reveal: Variants = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 0.61, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 0.61, 0.36, 1] },
+  },
 };
 
 export function Services() {

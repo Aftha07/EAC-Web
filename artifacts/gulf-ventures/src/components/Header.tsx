@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import companyLogo from '@assets/PHOTO-2026-08-25-17-38-23-Picsart-BackgroundRemover_1787679117327.jpg';
+import companyLogo from '@assets/EAC_LOGO-Picsart-BackgroundRemover_1787941651782.png';
 
 const navItems = [
   { id: 'home', label: 'Home' },
