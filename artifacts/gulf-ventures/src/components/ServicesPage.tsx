@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { services } from '@/lib/service-data';
+import { navigateTo } from '@/lib/navigation';
 
 export function ServicesPage() {
   return (
@@ -32,7 +33,28 @@ export function ServicesPage() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: index * 0.05 }}
-              className="overflow-hidden border border-[#102334]/10 bg-white shadow-sm"
+              className={`overflow-hidden border border-[#102334]/10 bg-white shadow-sm ${
+                service.slug === 'heavy-equipment-rental'
+                  ? 'cursor-pointer transition-shadow duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#c8102e] focus:ring-offset-2'
+                  : ''
+              }`}
+              onClick={
+                service.slug === 'heavy-equipment-rental'
+                  ? () => navigateTo('/services/equipment-rental')
+                  : undefined
+              }
+              onKeyDown={
+                service.slug === 'heavy-equipment-rental'
+                  ? (event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        navigateTo('/services/equipment-rental');
+                      }
+                    }
+                  : undefined
+              }
+              role={service.slug === 'heavy-equipment-rental' ? 'link' : undefined}
+              tabIndex={service.slug === 'heavy-equipment-rental' ? 0 : undefined}
             >
               <div className="relative aspect-[1.35] overflow-hidden bg-[#102334]">
                 <img
@@ -50,6 +72,12 @@ export function ServicesPage() {
                   {service.shortTitle}
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-[#60717a]">{service.lead}</p>
+                {service.slug === 'heavy-equipment-rental' && (
+                  <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#c8102e]">
+                    View equipment rental
+                    <span aria-hidden="true">→</span>
+                  </span>
+                )}
               </div>
             </motion.article>
           ))}
