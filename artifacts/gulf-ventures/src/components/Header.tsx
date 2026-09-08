@@ -7,7 +7,6 @@ import companyLogo from '@assets/EAC_LOGO-Picsart-BackgroundRemover_178794165178
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'services', label: 'Services' },
   { id: 'clients', label: 'Clients' },
   { id: 'contact', label: 'Contact' },
 ];
