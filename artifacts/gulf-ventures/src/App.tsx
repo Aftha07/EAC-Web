@@ -5,7 +5,6 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
-import { Services } from '@/components/Services';
 import { Equipment } from '@/components/Equipment';
 import { WhyChooseUs } from '@/components/WhyChooseUs';
 import { Clients } from '@/components/Clients';
@@ -46,7 +45,6 @@ function App() {
             <main>
               <Hero />
               <About />
-              <Services />
               <Equipment />
               <WhyChooseUs />
               <Clients />

@@ -11,6 +11,11 @@ const quickLinks = [
 
 export function Footer() {
   const handleSectionNavigation = (sectionId: string) => {
+    if (sectionId === 'services') {
+      navigateTo('/services');
+      return;
+    }
+
     if (window.location.pathname !== '/') {
       navigateTo('/');
       window.setTimeout(() => scrollToSection(sectionId), 120);

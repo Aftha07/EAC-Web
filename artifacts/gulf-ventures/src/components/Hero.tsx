@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { navigateTo } from '@/lib/navigation';
 import heroBg from '@assets/gulf-ventures/hero-bg.jpg';
 import serviceEquipment from '@assets/generated_images/service-heavy-equipment-reference-inspired.jpg';
 import serviceGas from '@assets/generated_images/service-industrial-gas.jpg';
@@ -177,7 +178,7 @@ export function Hero() {
                 Get a Quote <ArrowRight className="ml-3 h-4 w-4" />
               </Button>
               <Button
-                onClick={() => scrollToSection('services')}
+                onClick={() => navigateTo('/services')}
                 variant="outline"
                 className="h-14 rounded-none border-white/45 bg-white/5 px-7 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-[#071323]"
                 data-testid="cta-explore-services"
