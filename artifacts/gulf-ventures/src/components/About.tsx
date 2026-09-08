@@ -20,7 +20,7 @@ const values = [
   {
     icon: Users,
     title: 'Customer Satisfaction',
-    description: 'Building lasting partnerships through reliable service and results.',
+    description: 'Building lasting partnerships through reliable results.',
   },
 ];
 
@@ -51,7 +51,7 @@ export function About() {
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Our Mission</h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
               To deliver reliable, innovative industrial solutions across Saudi Arabia's energy sector, 
-              supporting our clients' operational excellence through superior equipment, materials, and services. 
+              supporting our clients' operational excellence through disciplined execution and strong partnerships. 
               We are committed to maintaining the highest standards of safety, quality, and professionalism 
               in every project we undertake.
             </p>
@@ -68,7 +68,7 @@ export function About() {
               To be recognized as the most trusted and reliable industrial partner in the region, 
               known for our unwavering commitment to safety, quality, and customer satisfaction. 
               We aspire to set the industry benchmark for operational excellence and innovation 
-              in industrial solutions and support services.
+              across the industrial sector.
             </p>
           </motion.div>
         </div>

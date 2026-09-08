@@ -10,11 +10,6 @@ const quickLinks = [
 
 export function Footer() {
   const handleSectionNavigation = (sectionId: string) => {
-    if (sectionId === 'services') {
-      navigateTo('/services');
-      return;
-    }
-
     if (window.location.pathname !== '/') {
       navigateTo('/');
       window.setTimeout(() => scrollToSection(sectionId), 120);
@@ -31,8 +26,8 @@ export function Footer() {
           <div>
             <h3 className="text-2xl font-bold mb-4">EASTERN ALLIANCE COMPANY</h3>
             <p className="text-white/80 leading-relaxed mb-4">
-              Eastern Alliance Company provides reliable equipment, materials, and services
-              for Saudi Arabia&apos;s energy and industrial sectors.
+              Eastern Alliance Company supports Saudi Arabia&apos;s energy and industrial sectors
+              through dependable partnerships and disciplined execution.
             </p>
           </div>
 

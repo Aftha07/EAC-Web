@@ -4,8 +4,8 @@ import { CheckCircle, Users, Award, Shield, DollarSign, Zap, Clock, Headphones, 
 const features = [
   {
     icon: CheckCircle,
-    title: 'Reliable Equipment',
-    description: 'Well-maintained, modern fleet ready for immediate deployment',
+    title: 'Operational Reliability',
+    description: 'Dependable execution built around your priorities',
   },
   {
     icon: Users,
@@ -14,7 +14,7 @@ const features = [
   },
   {
     icon: Award,
-    title: 'Quality Service',
+    title: 'Quality Standards',
     description: 'Consistent excellence in every project we undertake',
   },
   {
