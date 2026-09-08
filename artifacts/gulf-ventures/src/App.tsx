@@ -12,7 +12,7 @@ import { Clients } from '@/components/Clients';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { ServiceDetail } from '@/components/ServiceDetail';
-import { getServiceBySlug } from '@/lib/service-data';
+import { services } from '@/lib/service-data';
 
 const queryClient = new QueryClient();
 
@@ -29,19 +29,18 @@ function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  const serviceMatch = pathname.match(/^\/services\/([^/]+)\/?$/);
-  const selectedService = serviceMatch
-    ? getServiceBySlug(decodeURIComponent(serviceMatch[1]))
-    : undefined;
+  const isServicesPage = pathname === '/services';
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="min-h-screen w-full">
           <Header />
-          {selectedService ? (
+          {isServicesPage ? (
             <main>
-              <ServiceDetail service={selectedService} />
+              {services.map((service) => (
+                <ServiceDetail key={service.slug} service={service} />
+              ))}
             </main>
           ) : (
             <main>

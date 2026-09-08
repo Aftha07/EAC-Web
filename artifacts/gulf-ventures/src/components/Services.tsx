@@ -1,6 +1,6 @@
 import { ArrowRight, Compass, Route, ShieldCheck } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { navigateTo } from '@/lib/navigation';
+import { navigateTo, scrollToSection } from '@/lib/navigation';
 import { services } from '@/lib/service-data';
 
 const reveal: Variants = {
@@ -17,7 +17,13 @@ export function Services() {
   const supporting = services.slice(1);
 
   const openService = (slug: string) => {
-    navigateTo(`/services/${slug}`);
+    if (window.location.pathname !== '/services') {
+      navigateTo('/services');
+      window.setTimeout(() => scrollToSection(`service-${slug}`), 120);
+      return;
+    }
+
+    scrollToSection(`service-${slug}`);
   };
 
   return (

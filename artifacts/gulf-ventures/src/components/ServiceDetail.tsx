@@ -201,7 +201,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </button>
           <button
             type="button"
-            onClick={() => navigateTo(`/services/${nextService.slug}`)}
+            onClick={() => scrollToSection(`service-${nextService.slug}`)}
             className="group inline-flex items-center gap-3 text-right text-xs font-bold uppercase tracking-[0.14em] text-[#60717a] transition-colors hover:text-[#c8102e]"
           >
             Next: {nextService.shortTitle}
