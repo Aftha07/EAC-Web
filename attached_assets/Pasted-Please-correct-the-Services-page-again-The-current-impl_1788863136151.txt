@@ -1,0 +1,157 @@
+Please correct the Services page again.
+
+The current implementation is still not matching what I need.
+
+I DO NOT want a separate interface, separate screen, separate route, or separate page for each individual service.
+
+I need ONLY ONE SERVICES PAGE.
+
+Inside that single Services page, create large full-width service sections arranged vertically one after another.
+
+The structure must be exactly like this:
+
+SERVICES PAGE
+
+Equipment Rental
+↓ user scrolls down normally
+
+Gas Supply
+↓ user scrolls down normally
+
+Material Supply
+↓ user scrolls down normally
+
+Manpower / Workforce Supply
+↓ user scrolls down normally
+
+Transportation / Logistics
+↓ user scrolls down normally
+
+Other existing services
+↓
+Footer
+
+VERY IMPORTANT:
+
+Do not create an individual page/interface for Equipment.
+
+Do not create an individual page/interface for Gas.
+
+Do not create an individual page/interface for Material Supply.
+
+Do not create individual service pages for the remaining services.
+
+All of them must exist inside ONE parent Services page component.
+
+For example, structurally it should work similar to:
+
+<section id="equipment">
+Equipment content
+</section>
+
+<section id="gas">
+Gas Supply content
+</section>
+
+<section id="material">
+Material Supply content
+</section>
+
+<section id="manpower">
+Manpower content
+</section>
+
+<section id="transportation">
+Transportation content
+</section>
+
+These sections must be physically placed one below another in the same page DOM.
+
+The visitor should be able to enter the Services page at Equipment and then simply use the mouse wheel / trackpad / mobile swipe to continue directly into Gas, then Material, then Manpower, etc.
+
+DO NOT require the visitor to press Back, Next, View Service, or another navigation button to reach the next service.
+
+DO NOT use carousel/slider behavior for switching services.
+
+DO NOT replace the whole page content when another service is selected.
+
+DO NOT use separate full-screen service components that behave like individual pages.
+
+Navigation menu behavior:
+
+If "Equipment Rental" is clicked:
+Go to /services#equipment
+
+If "Gas Supply" is clicked:
+Go to /services#gas
+
+If "Material Supply" is clicked:
+Go to /services#material
+
+If "Manpower" is clicked:
+Go to /services#manpower
+
+If "Transportation" is clicked:
+Go to /services#transportation
+
+Use smooth scrolling to the corresponding section.
+
+If the visitor is already on the Services page, clicking another service should only smoothly scroll to that section. It must NOT reload the page.
+
+DESIGN REQUIREMENT:
+
+Each service should still look like a premium individual section.
+
+Do NOT convert them into small cards.
+
+Make each service section visually substantial, around 80vh–100vh where appropriate.
+
+For example:
+
+Equipment Rental:
+Text/content on left
+Large equipment image on right
+
+Gas Supply:
+Large gas image on left
+Text/content on right
+
+Material Supply:
+Text/content on left
+Large material image on right
+
+Manpower:
+Image left
+Content right
+
+Continue alternating layouts.
+
+There should be a clear but elegant visual transition between sections so visitors understand they have entered another service category.
+
+Keep:
+
+* Existing Eastern Alliance header
+* Existing footer
+* Existing company branding
+* Black, white and red theme
+* Existing service information
+* Existing enquiry / quotation CTA
+* Existing responsive mobile design
+
+Do NOT unnecessarily redesign the homepage or other website pages.
+
+The main correction is the ARCHITECTURE:
+
+WRONG:
+Services → Equipment separate interface
+Services → Gas separate interface
+Services → Material separate interface
+
+CORRECT:
+Services → Equipment → scroll → Gas → scroll → Material → scroll → Manpower → scroll → Transportation → Footer
+
+ONE PAGE.
+ONE CONTINUOUS VERTICAL SCROLL.
+MULTIPLE LARGE SERVICE SECTIONS.
+
+Please inspect the current routing/components and refactor them accordingly rather than only changing the visual styling.

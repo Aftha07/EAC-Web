@@ -16,14 +16,9 @@ export function Services() {
   const featured = services[0];
   const supporting = services.slice(1);
 
-  const openService = (slug: string) => {
-    if (window.location.pathname !== '/services') {
-      navigateTo('/services');
-      window.setTimeout(() => scrollToSection(`service-${slug}`), 120);
-      return;
-    }
-
-    scrollToSection(`service-${slug}`);
+  const openService = (sectionId: string) => {
+    navigateTo(`/services#${sectionId}`);
+    window.setTimeout(() => scrollToSection(sectionId), 140);
   };
 
   return (

@@ -24,6 +24,7 @@ function goToQuote() {
 
 function goToServices() {
   if (window.location.pathname === '/services') {
+    window.history.replaceState({}, '', '/services');
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
   }
