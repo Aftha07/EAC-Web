@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Check, ChevronRight, MapPin, MoveUpRight } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { scrollToSection } from '@/lib/navigation';
+import { navigateTo, scrollToSection } from '@/lib/navigation';
 import type { ServiceDetail as ServiceDetailModel } from '@/lib/service-data';
 import { services } from '@/lib/service-data';
 
@@ -18,7 +18,13 @@ const reveal: Variants = {
 };
 
 function goToQuote() {
-  scrollToSection('contact');
+  navigateTo('/');
+  window.setTimeout(() => scrollToSection('contact'), 120);
+}
+
+function goToServices() {
+  navigateTo('/');
+  window.setTimeout(() => scrollToSection('services'), 120);
 }
 
 export function ServiceDetail({ service }: ServiceDetailProps) {
@@ -31,7 +37,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
       id={`service-${service.slug}`}
       className="scroll-mt-28 border-t border-[#102334]/10 bg-[#f7f5f0] text-[#102334]"
     >
-      <section className="bg-white py-14 sm:py-20">
+      <section className="bg-white pb-16 pt-36 sm:pb-24 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="mb-10 flex flex-col justify-between gap-4 border-b border-[#102334]/15 pb-5 sm:flex-row sm:items-center">
             <div className="flex items-center gap-3">
@@ -46,7 +52,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
             </div>
             <button
               type="button"
-              onClick={() => scrollToSection('services')}
+              onClick={goToServices}
               className="group inline-flex items-center gap-2 self-start text-xs font-bold uppercase tracking-[0.14em] text-[#60717a] transition-colors hover:text-[#c8102e] sm:self-auto"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -187,7 +193,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 sm:flex-row sm:items-center sm:px-8 lg:px-12">
           <button
             type="button"
-            onClick={() => scrollToSection('services')}
+            onClick={goToServices}
             className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-[#60717a] transition-colors hover:text-[#c8102e]"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -195,7 +201,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </button>
           <button
             type="button"
-            onClick={() => scrollToSection(`service-${nextService.slug}`)}
+            onClick={() => navigateTo(`/services/${nextService.slug}`)}
             className="group inline-flex items-center gap-3 text-right text-xs font-bold uppercase tracking-[0.14em] text-[#60717a] transition-colors hover:text-[#c8102e]"
           >
             Next: {nextService.shortTitle}
