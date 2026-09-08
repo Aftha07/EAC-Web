@@ -46,7 +46,7 @@ export function Services() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-[#60717a] lg:pb-1">
-            Six practical activities. One accountable partner. We bring the equipment,
+            Seven practical activities. One accountable partner. We bring the equipment,
             materials, people, and discipline that keep industrial work moving.
           </p>
         </motion.div>
@@ -54,7 +54,7 @@ export function Services() {
         <div className="grid gap-5 lg:grid-cols-12">
           <motion.button
             type="button"
-            onClick={() => openService(featured.slug)}
+            onClick={() => openService(featured.sectionId)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
@@ -71,7 +71,7 @@ export function Services() {
             <div className="absolute left-0 top-0 h-full w-1 bg-[#c8102e] transition-all duration-500 group-hover:w-2" />
             <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10">
               <div className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.17em] text-[#e0b974]">
-                <span>{featured.number} / 06</span>
+                <span>{featured.number} / {services.length.toString().padStart(2, '0')}</span>
                 <span className="h-px w-12 bg-[#e0b974]/60" />
                 Featured activity
               </div>
@@ -92,7 +92,7 @@ export function Services() {
                 <motion.button
                   key={service.slug}
                   type="button"
-                  onClick={() => openService(service.slug)}
+                  onClick={() => openService(service.sectionId)}
                   initial={{ opacity: 0, x: 24 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
@@ -163,7 +163,7 @@ export function Services() {
           </p>
           <button
             type="button"
-            onClick={() => openService(featured.slug)}
+            onClick={() => openService(featured.sectionId)}
             className="service-link-line flex items-center gap-3 pb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#102334]"
           >
             Explore all capabilities <ArrowRight className="h-4 w-4 text-[#c8102e]" />

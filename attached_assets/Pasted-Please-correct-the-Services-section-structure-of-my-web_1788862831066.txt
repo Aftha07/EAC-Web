@@ -1,0 +1,92 @@
+Please correct the Services section structure of my website.
+
+Right now, the services are designed like separate interfaces/pages, which is not what I want.
+
+I need ONE continuous Services page with all services arranged vertically, one after another, so the visitor can simply scroll down through every service.
+
+The required order should be:
+
+1. Equipment Rental
+2. Gas Supply
+3. Material Supply
+4. Manpower / Workforce Supply
+5. Transportation / Logistics
+6. Any remaining services already available on the website
+
+IMPORTANT REQUIREMENTS:
+
+* Do NOT create a separate webpage or separate interface for each service.
+* Keep all services inside ONE single Services page.
+* Each service should have its own large, professional section.
+* When the Equipment section finishes, scrolling down should naturally continue directly into the Gas Supply section.
+* After Gas Supply, scrolling should continue into Material Supply, then Manpower, Transportation, and the remaining services.
+* There should be NO page reload when moving between these services.
+* There should be NO separate route/page such as `/services/equipment`, `/services/gas`, etc. for normal service navigation.
+* Use section IDs instead, for example:
+
+  * `#equipment`
+  * `#gas`
+  * `#material`
+  * `#manpower`
+  * `#transportation`
+
+Navigation behavior:
+
+If the user clicks "Equipment Rental" from the Services menu, open the Services page and smoothly scroll to the Equipment section.
+
+If the user clicks "Gas Supply", smoothly scroll to the Gas Supply section on the SAME Services page.
+
+Do the same for Material Supply, Manpower, Transportation, and all other services.
+
+DESIGN:
+
+Do not make all sections look like small cards.
+
+Each service section should feel like a premium full website section, approximately 80–100vh where suitable, with:
+
+* Professional industrial image
+* Service title
+* Short description
+* Main capabilities/services
+* Suitable CTA such as "Request a Quote" or "Enquire Now"
+
+Alternate the layouts for a premium appearance:
+
+Equipment:
+Large image on the right, content on the left.
+
+Gas Supply:
+Large image on the left, content on the right.
+
+Material Supply:
+Content left, image right.
+
+Continue alternating the layout for the following services.
+
+Keep the existing Eastern Alliance branding, colors, header, footer, fonts and overall professional industrial style.
+
+Add smooth scrolling and subtle scroll animations, but keep everything corporate and clean.
+
+VERY IMPORTANT:
+Do not redesign the whole website unnecessarily.
+Only correct the Services page structure and navigation behavior.
+
+The final experience must be:
+
+Services
+↓
+Equipment Rental
+↓ scroll
+Gas Supply
+↓ scroll
+Material Supply
+↓ scroll
+Manpower / Workforce Supply
+↓ scroll
+Transportation / Logistics
+↓ scroll
+Other Services
+↓
+Footer
+
+This should feel like ONE long premium Services webpage, NOT multiple mini websites or separate service interfaces.

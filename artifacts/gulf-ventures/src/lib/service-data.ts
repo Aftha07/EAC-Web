@@ -5,6 +5,7 @@ import {
   FlaskConical,
   HardHat,
   ShieldCheck,
+  Truck,
   Wrench,
 } from 'lucide-react';
 import serviceEquipment from '@assets/generated_images/service-heavy-equipment-reference-inspired.jpg';
@@ -13,9 +14,11 @@ import serviceTrading from '@assets/generated_images/service-material-trading.jp
 import serviceManpower from '@assets/generated_images/service-manpower.jpg';
 import serviceShutdown from '@assets/generated_images/service-shutdown.jpg';
 import serviceSafety from '@assets/generated_images/service-safety.jpg';
+import serviceTransportation from '@assets/generated_images/service-transportation-logistics.jpg';
 
 export type ServiceDetail = {
   slug: string;
+  sectionId: string;
   number: string;
   label: string;
   title: string;
@@ -34,6 +37,7 @@ export type ServiceDetail = {
 export const services: ServiceDetail[] = [
   {
     slug: 'heavy-equipment-rental',
+    sectionId: 'equipment',
     number: '01',
     label: 'Heavy Equipment Rental',
     shortTitle: 'Equipment Rental',
@@ -64,6 +68,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: 'industrial-gas-supply',
+    sectionId: 'gas',
     number: '02',
     label: 'Industrial Gas Supply',
     shortTitle: 'Industrial Gas',
@@ -94,6 +99,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: 'material-trading',
+    sectionId: 'material',
     number: '03',
     label: 'Material Trading',
     shortTitle: 'Material Trading',
@@ -124,6 +130,7 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: 'manpower-supply',
+    sectionId: 'manpower',
     number: '04',
     label: 'Manpower Supply',
     shortTitle: 'Manpower Supply',
@@ -153,8 +160,40 @@ export const services: ServiceDetail[] = [
     ],
   },
   {
-    slug: 'shutdown-support',
+    slug: 'transportation-logistics',
+    sectionId: 'transportation',
     number: '05',
+    label: 'Transportation & Logistics',
+    shortTitle: 'Transport & Logistics',
+    eyebrow: 'Move with confidence.',
+    title: 'Keep every workfront moving.',
+    lead: 'Coordinated transportation and logistics for equipment, materials, and project-critical movement across the Kingdom.',
+    description:
+      'Eastern Alliance Company helps industrial teams move what matters, when it matters. From equipment mobilization to material deliveries and site-to-site coordination, our logistics support is planned around access, timing, and the realities of active workfronts.',
+    image: serviceTransportation,
+    icon: Truck,
+    stats: [
+      { value: 'KSA', label: 'Project movement' },
+      { value: 'ON', label: 'Schedule focused' },
+      { value: 'SITE', label: 'Delivery coordination' },
+    ],
+    capabilities: [
+      'Equipment mobilization and demobilization',
+      'Flatbed and industrial cargo movement',
+      'Project material deliveries',
+      'Site access and delivery coordination',
+    ],
+    sectors: ['Oil & gas', 'Construction', 'Infrastructure', 'Industrial projects'],
+    process: [
+      { step: '01', title: 'Map the movement', copy: 'We clarify the load, route, access limits, timing, and receiving conditions.' },
+      { step: '02', title: 'Plan the run', copy: 'Transport, loading, and site coordination are organized around the workfront schedule.' },
+      { step: '03', title: 'Deliver with control', copy: 'Clear updates and practical coordination keep every handoff accountable.' },
+    ],
+  },
+  {
+    slug: 'shutdown-support',
+    sectionId: 'shutdown',
+    number: '06',
     label: 'Shutdown Support',
     shortTitle: 'Shutdown Support',
     eyebrow: 'Every hour has a consequence.',
@@ -184,7 +223,8 @@ export const services: ServiceDetail[] = [
   },
   {
     slug: 'safety-materials',
-    number: '06',
+    sectionId: 'safety',
+    number: '07',
     label: 'Safety Materials',
     shortTitle: 'Safety Materials',
     eyebrow: 'Protection is part of production.',

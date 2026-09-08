@@ -23,6 +23,11 @@ function goToQuote() {
 }
 
 function goToServices() {
+  if (window.location.pathname === '/services') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
   navigateTo('/');
   window.setTimeout(() => scrollToSection('services'), 120);
 }
@@ -31,10 +36,11 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
   const Icon = service.icon;
   const currentIndex = services.findIndex((item) => item.slug === service.slug);
   const nextService = services[(currentIndex + 1) % services.length];
+  const isReversed = currentIndex % 2 === 1;
 
   return (
     <article
-      id={`service-${service.slug}`}
+      id={service.sectionId}
       className="scroll-mt-28 border-t border-[#102334]/10 bg-[#f7f5f0] text-[#102334]"
     >
       <section className="bg-white pb-16 pt-36 sm:pb-24 sm:pt-44">
@@ -43,7 +49,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
             <div className="flex items-center gap-3">
               <span className="h-2 w-2 bg-[#c8102e]" />
               <span className="service-mono text-[10px] uppercase tracking-[0.16em] text-[#60717a]">
-                Activity {service.number} of 06
+                Activity {service.number} of {services.length.toString().padStart(2, '0')}
               </span>
               <span className="hidden h-px w-10 bg-[#102334]/20 sm:block" />
               <span className="hidden text-xs font-semibold uppercase tracking-[0.12em] text-[#102334] sm:block">
@@ -60,8 +66,14 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
             </button>
           </div>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={reveal}>
+          <div className={`grid items-center gap-10 lg:gap-16 ${isReversed ? 'lg:grid-cols-[1.18fr_0.82fr]' : 'lg:grid-cols-[0.82fr_1.18fr]'}`}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+              variants={reveal}
+              className={isReversed ? 'lg:order-2' : 'lg:order-1'}
+            >
               <div className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-[#c8102e]">
                 <span className="h-px w-8 bg-[#c8102e]" />
                 {service.eyebrow}
@@ -84,7 +96,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.65 }}
-              className="relative aspect-[1.45] overflow-hidden bg-[#102334]"
+              className={`relative aspect-[1.45] overflow-hidden bg-[#102334] ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}
             >
               <img
                 src={service.image}
@@ -97,7 +109,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
                 {service.label}
               </div>
               <span className="service-mono absolute right-5 top-5 text-[10px] text-white/80 sm:right-7 sm:top-7">
-                {service.number} / 06
+                {service.number} / {services.length.toString().padStart(2, '0')}
               </span>
             </motion.div>
           </div>
@@ -201,7 +213,7 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </button>
           <button
             type="button"
-            onClick={() => scrollToSection(`service-${nextService.slug}`)}
+            onClick={() => scrollToSection(nextService.sectionId)}
             className="group inline-flex items-center gap-3 text-right text-xs font-bold uppercase tracking-[0.14em] text-[#60717a] transition-colors hover:text-[#c8102e]"
           >
             Next: {nextService.shortTitle}
