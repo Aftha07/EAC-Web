@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
 import { Services } from '@/components/Services';
+import { Equipment } from '@/components/Equipment';
 import { WhyChooseUs } from '@/components/WhyChooseUs';
 import { Clients } from '@/components/Clients';
 import { Contact } from '@/components/Contact';
@@ -27,6 +28,7 @@ function App() {
             {services.map((service) => (
               <ServiceDetail key={service.slug} service={service} />
             ))}
+            <Equipment />
             <WhyChooseUs />
             <Clients />
             <Contact />
