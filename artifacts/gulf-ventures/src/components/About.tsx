@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Shield, Award, Target, Users } from 'lucide-react';
-import companyLogo from '@assets/EAC_LOGO-Picsart-BackgroundRemover_1787941651782.png';
 import aboutImage from '@assets/gulf-ventures/hero-bg.jpg';
 
 const values = [
@@ -83,9 +82,6 @@ export function About() {
               className="absolute inset-0 h-full w-full object-cover object-center opacity-75"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#101c27]/85 via-transparent to-transparent" />
-            <div className="absolute left-6 top-6 border border-[#C8102E] bg-white/90 p-4 sm:left-8 sm:top-8">
-              <img src={companyLogo} alt="Eastern Alliance Company" className="h-14 w-auto object-contain" />
-            </div>
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8">
               <div className="mb-3 h-1 w-14 bg-[#C8102E]" />
               <p className="max-w-md text-lg font-semibold leading-7 text-white" style={{ color: '#ffffff' }}>

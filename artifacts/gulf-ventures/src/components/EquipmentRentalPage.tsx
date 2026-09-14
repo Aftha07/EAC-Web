@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Boxes, Construction, Truck, Wrench, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Boxes, Construction, Truck, Wrench, Zap } from 'lucide-react';
 import mobileCrane from '@assets/generated_images/equipment-mobile-crane.jpg';
 import boomLift from '@assets/generated_images/equipment-boom-lift.jpg';
 import scissorLift from '@assets/generated_images/equipment-scissor-lift.jpg';
@@ -10,6 +11,21 @@ import airCompressor from '@assets/generated_images/equipment-air-compressor.jpg
 import weldingMachine from '@assets/generated_images/equipment-welding-machine.jpg';
 import lightTower from '@assets/generated_images/equipment-light-tower.jpg';
 import heavyEquipment from '@assets/generated_images/service-heavy-equipment-reference-inspired.jpg';
+import mobileCranes from '@assets/gulf-ventures/MC.png';
+import crawlerCranes from '@assets/gulf-ventures/CC.png';
+import roughTerrainCranes from '@assets/gulf-ventures/RT.png';
+import flatbedTrailers from '@assets/gulf-ventures/FB.png';
+import excavators from '@assets/gulf-ventures/EXC.png';
+import wheelLoaders from '@assets/gulf-ventures/Ex.png';
+import backhoeLoaders from '@assets/gulf-ventures/BH.png';
+import skidSteers from '@assets/gulf-ventures/bob.png';
+import dozers from '@assets/gulf-ventures/DZ.png';
+import gradersRollers from '@assets/gulf-ventures/RL.png';
+import roughTerrainForklifts from '@assets/gulf-ventures/RTB.png';
+import dumpTrucks from '@assets/gulf-ventures/DT.png';
+import pickupsDynaTrucks from '@assets/gulf-ventures/PK.png';
+import buses from '@assets/gulf-ventures/bus.png';
+import trailers from '@assets/gulf-ventures/TL.png';
 import { navigateTo, scrollToSection } from '@/lib/navigation';
 
 type EquipmentItem = {
@@ -33,10 +49,10 @@ const equipmentGroups: EquipmentGroup[] = [
     description: 'Built for critical lifts, demanding access, and complex workfronts.',
     icon: Construction,
     items: [
-      { name: 'Mobile Cranes', detail: 'Multiple capacities and configurations', image: mobileCrane },
-      { name: 'Crawler Cranes', detail: 'Stable lifting for demanding ground conditions', image: mobileCrane },
-      { name: 'Rough Terrain Cranes', detail: 'Mobile lifting across active sites', image: mobileCrane },
-      { name: 'Flatbed Trailers & Low Beds', detail: 'Equipment mobilization and heavy transport', image: heavyEquipment },
+      { name: 'Mobile Cranes', detail: 'Multiple capacities and configurations', image: mobileCranes },
+      { name: 'Crawler Cranes', detail: 'Stable lifting for demanding ground conditions', image: crawlerCranes },
+      { name: 'Rough Terrain Cranes', detail: 'Mobile lifting across active sites', image: roughTerrainCranes },
+      { name: 'Flatbed Trailers & Low Beds', detail: 'Equipment mobilization and heavy transport', image: flatbedTrailers },
     ],
   },
   {
@@ -45,12 +61,12 @@ const equipmentGroups: EquipmentGroup[] = [
     description: 'Reliable machines for excavation, grading, loading, and site preparation.',
     icon: Boxes,
     items: [
-      { name: 'Excavators', detail: 'Digging, trenching, and material handling', image: heavyEquipment },
-      { name: 'Wheel Loaders', detail: 'High-output loading and stockpile movement', image: heavyEquipment },
-      { name: 'Backhoe Loaders', detail: 'Versatile excavation and utility work', image: heavyEquipment },
-      { name: 'Skid Steers & Bobcats', detail: 'Compact power for tight workfronts', image: heavyEquipment },
-      { name: 'Dozers', detail: 'Pushing, spreading, and site preparation', image: heavyEquipment },
-      { name: 'Graders & Rollers', detail: 'Precise grading and ground compaction', image: heavyEquipment },
+      { name: 'Excavators', detail: 'Digging, trenching, and material handling', image: excavators },
+      { name: 'Wheel Loaders', detail: 'High-output loading and stockpile movement', image: wheelLoaders },
+      { name: 'Backhoe Loaders', detail: 'Versatile excavation and utility work', image: backhoeLoaders },
+      { name: 'Skid Steers & Bobcats', detail: 'Compact power for tight workfronts', image: skidSteers },
+      { name: 'Dozers', detail: 'Pushing, spreading, and site preparation', image: dozers },
+      { name: 'Graders & Rollers', detail: 'Precise grading and ground compaction', image: gradersRollers },
     ],
   },
   {
@@ -75,7 +91,7 @@ const equipmentGroups: EquipmentGroup[] = [
     items: [
       { name: 'Forklifts', detail: 'Material handling up to heavy-duty capacities', image: forklift },
       { name: 'Telehandlers', detail: 'Multi-purpose reach and placement', image: telehandler },
-      { name: 'Rough Terrain Forklifts', detail: 'Handling across uneven outdoor sites', image: telehandler },
+      { name: 'Rough Terrain Forklifts', detail: 'Handling across uneven outdoor sites', image: roughTerrainForklifts },
       { name: 'Manlifts', detail: 'Safe access for elevated work', image: boomLift },
     ],
   },
@@ -85,10 +101,10 @@ const equipmentGroups: EquipmentGroup[] = [
     description: 'Movement support for people, materials, equipment, and project logistics.',
     icon: Truck,
     items: [
-      { name: 'Dump Trucks', detail: 'Bulk material movement and site support', image: heavyEquipment },
-      { name: 'Pickups & Dyna Trucks', detail: 'Flexible daily project transport', image: heavyEquipment },
-      { name: 'Buses', detail: 'Workforce and site transportation', image: heavyEquipment },
-      { name: 'Trailers', detail: 'Equipment and material delivery support', image: heavyEquipment },
+      { name: 'Dump Trucks', detail: 'Bulk material movement and site support', image: dumpTrucks },
+      { name: 'Pickups & Dyna Trucks', detail: 'Flexible daily project transport', image: pickupsDynaTrucks },
+      { name: 'Buses', detail: 'Workforce and site transportation', image: buses },
+      { name: 'Trailers', detail: 'Equipment and material delivery support', image: trailers },
     ],
   },
 ];
@@ -103,9 +119,29 @@ function requestAvailability() {
   scrollToSection('contact');
 }
 
+function returnToServices() {
+  if (window.location.pathname !== '/') {
+    navigateTo('/');
+    window.setTimeout(() => scrollToSection('services'), 120);
+    return;
+  }
+
+  scrollToSection('services');
+}
+
 export function EquipmentRentalPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 120);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <main className="bg-[#f7f5f0] text-[#102334]">
+    <main className="bg-[#102334] text-white">
       <section className="relative isolate overflow-hidden bg-[#071323] text-white">
         <div className="absolute inset-0">
           <img
@@ -117,7 +153,24 @@ export function EquipmentRentalPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#071323] via-transparent to-transparent" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[42rem] max-w-7xl items-end px-5 pb-16 pt-40 sm:px-8 sm:pb-24 lg:px-12">
+        <div className="relative mx-auto flex min-h-[42rem] max-w-7xl items-end px-5 pb-16 pt-32 sm:px-8 sm:pb-24 lg:px-12">
+          <button
+            type="button"
+            onClick={returnToServices}
+            aria-label="Return to all services"
+            title="Return to all services"
+            style={isScrolled ? undefined : { top: '8.5rem' }}
+            className={`group z-40 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-white/75 transition-all hover:text-white ${
+              isScrolled
+                ? 'fixed left-5 top-28 h-10 w-10 justify-center bg-[#102334]/85 sm:left-8 lg:left-12'
+                : 'absolute left-5 sm:left-8 lg:left-12'
+            }`}
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5 group-hover:text-[#c8102e]" />
+            <span className={`transition-all group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#f2b2bd] group-hover:to-[#c8102e] group-hover:bg-clip-text group-hover:text-transparent ${isScrolled ? 'sr-only' : ''}`}>
+              View all services
+            </span>
+          </button>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -138,28 +191,28 @@ export function EquipmentRentalPage() {
         </div>
       </section>
 
-      <section className="border-b border-[#102334]/10 py-16 sm:py-20">
+      <section className="border-b border-white/15 bg-[#102334] py-16 text-white sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20 lg:px-12">
           <div>
             <div className="service-mono mb-4 text-[10px] uppercase tracking-[0.16em] text-[#c8102e]">Our promise</div>
-            <h2 className="service-display max-w-md text-5xl font-bold uppercase leading-[0.9] sm:text-6xl">
+            <h2 className="service-display max-w-md text-5xl font-bold uppercase leading-[0.9] text-white sm:text-6xl">
               The right machine for the critical lift.
             </h2>
           </div>
-          <p className="max-w-3xl text-lg leading-8 text-[#344b59] sm:text-xl">
+          <p className="max-w-3xl text-lg leading-8 text-white/70 sm:text-xl">
             From heavy lifting and earthmoving to temporary power and site access, our rental fleet is organized around the realities of active industrial work. Tell us what the workfront needs and we will help plan the right equipment mix.
           </p>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="bg-[#102334] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="mb-12 flex flex-col justify-between gap-5 border-b border-[#102334]/15 pb-7 sm:flex-row sm:items-end">
+          <div className="mb-12 flex flex-col justify-between gap-5 border-b border-white/15 pb-7 sm:flex-row sm:items-end">
             <div>
               <div className="service-mono mb-3 text-[10px] uppercase tracking-[0.16em] text-[#c8102e]">Available equipment</div>
-              <h2 className="service-display text-5xl font-bold uppercase leading-none sm:text-7xl">Built for the workfront.</h2>
+              <h2 className="service-display text-5xl font-bold uppercase leading-none text-white sm:text-7xl">Built for the workfront.</h2>
             </div>
-            <p className="max-w-sm text-sm leading-6 text-[#60717a]">
+            <p className="max-w-sm text-sm leading-6 text-white/60">
               Explore the equipment categories available for project delivery, site support, and industrial operations.
             </p>
           </div>
@@ -176,14 +229,14 @@ export function EquipmentRentalPage() {
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6 }}
                 >
-                  <div className="mb-7 flex items-start gap-4 border-b border-[#102334]/15 pb-5">
+                  <div className="mb-7 flex items-start gap-4 border-b border-white/15 pb-5">
                     <span className="service-mono pt-1 text-[10px] text-[#c8102e]">{group.number}</span>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
                         <Icon className="h-5 w-5 text-[#c8102e]" />
-                        <h3 className="service-display text-3xl font-semibold uppercase sm:text-4xl">{group.label}</h3>
+                        <h3 className="service-display text-3xl font-semibold uppercase text-white sm:text-4xl">{group.label}</h3>
                       </div>
-                      <p className="mt-2 max-w-2xl text-sm leading-6 text-[#60717a]">{group.description}</p>
+                      <p className="mt-2 max-w-2xl text-sm leading-6 text-white/60">{group.description}</p>
                     </div>
                   </div>
 
@@ -195,7 +248,7 @@ export function EquipmentRentalPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-40px' }}
                         transition={{ duration: 0.45, delay: itemIndex * 0.05 }}
-                        className="group overflow-hidden border border-[#102334]/10 bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl"
+                        className="group overflow-hidden border border-white/20 bg-[#102334] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#c8102e] hover:shadow-[0_18px_35px_rgba(0,0,0,.28)]"
                       >
                         <div className="relative aspect-[1.25] overflow-hidden bg-[#102334]">
                           <img
@@ -203,15 +256,15 @@ export function EquipmentRentalPage() {
                             alt={`${item.name} available from Eastern Alliance Company`}
                             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#102334]/70 via-transparent to-transparent" />
-                          <span className="service-mono absolute left-4 top-4 bg-white/90 px-2 py-1 text-[10px] text-[#102334]">
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1722]/85 via-transparent to-transparent" />
+                          <span className="service-mono absolute left-4 top-4 bg-[#c8102e] px-2 py-1 text-[10px] text-white">
                             {String(groupIndex + 1).padStart(2, '0')}.{String(itemIndex + 1).padStart(2, '0')}
                           </span>
                         </div>
                         <div className="flex min-h-[8.5rem] items-start justify-between gap-3 p-5">
                           <div>
-                            <h4 className="service-display text-2xl font-semibold uppercase leading-none">{item.name}</h4>
-                            <p className="mt-2 text-sm leading-6 text-[#60717a]">{item.detail}</p>
+                            <h4 className="service-display text-2xl font-semibold uppercase leading-none text-white">{item.name}</h4>
+                            <p className="mt-2 text-sm leading-6 text-white/60">{item.detail}</p>
                           </div>
                           <span className="mt-1 h-2 w-2 shrink-0 bg-[#c8102e]" />
                         </div>

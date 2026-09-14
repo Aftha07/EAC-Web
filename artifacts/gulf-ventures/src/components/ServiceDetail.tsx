@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { navigateTo, scrollToSection } from '@/lib/navigation';
 import type { ServiceDetail as ServiceDetailModel } from '@/lib/service-data';
@@ -11,6 +11,16 @@ type ServiceDetailProps = {
 function requestQuote() {
   navigateTo('/');
   window.setTimeout(() => scrollToSection('contact'), 120);
+}
+
+function returnToServices() {
+  if (window.location.pathname !== '/') {
+    navigateTo('/');
+    window.setTimeout(() => scrollToSection('services'), 120);
+    return;
+  }
+
+  scrollToSection('services');
 }
 
 export function ServiceDetail({ service }: ServiceDetailProps) {
@@ -27,6 +37,14 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
     <article id={service.sectionId} className="scroll-mt-28 border-t border-[#102334]/10 bg-[#f7f5f0] text-[#102334]">
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <button
+            type="button"
+            onClick={returnToServices}
+            className="group mb-10 inline-flex items-center gap-3 border border-[#102334]/20 bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#102334] shadow-sm transition-all hover:border-[#c8102e] hover:bg-[#c8102e] hover:text-white"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            View all services
+          </button>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}

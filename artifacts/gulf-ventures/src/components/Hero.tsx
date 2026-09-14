@@ -107,9 +107,9 @@ export function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-black/60" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.98)_0%,rgba(0,0,0,.9)_36%,rgba(0,0,0,.62)_70%,rgba(0,0,0,.38)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.78)_0%,rgba(0,0,0,.22)_52%,rgba(0,0,0,.48)_100%)]" />
+      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,.86)_0%,rgba(0,0,0,.68)_36%,rgba(0,0,0,.34)_70%,rgba(0,0,0,.18)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,.52)_0%,rgba(0,0,0,.12)_52%,rgba(0,0,0,.3)_100%)]" />
       <div className="absolute left-0 top-0 h-40 w-20 bg-[#C8102E] [clip-path:polygon(0_0,100%_0,42%_100%,0_100%)] opacity-90 sm:h-56 sm:w-28" />
       <div className="absolute bottom-0 right-0 h-24 w-16 bg-[#C8102E] [clip-path:polygon(100%_0,100%_100%,0_100%)] opacity-90 sm:h-32 sm:w-24" />
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { navigateTo, scrollToSection } from '@/lib/navigation';
-import companyLogo from '@assets/EAC_LOGO-Picsart-BackgroundRemover_1787941651782.png';
+import companyLogo from '@assets/gulf-ventures/EAC BG.png';
 
 const navItems = [
   { id: 'home', label: 'Home' },

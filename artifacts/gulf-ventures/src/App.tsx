@@ -11,6 +11,8 @@ import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { ServicesPage } from '@/components/ServicesPage';
 import { EquipmentRentalPage } from '@/components/EquipmentRentalPage';
+import { ServiceDetail } from '@/components/ServiceDetail';
+import { getServiceBySlug } from '@/lib/service-data';
 
 const queryClient = new QueryClient();
 
@@ -18,6 +20,16 @@ function App() {
   const [pathname, setPathname] = useState(() => window.location.pathname);
 
   useEffect(() => {
+    const navigationEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    const wasReloaded = navigationEntry?.type === 'reload';
+
+    if (wasReloaded && window.location.pathname !== '/') {
+      window.history.replaceState({}, '', '/');
+      setPathname('/');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      return;
+    }
+
     const handleLocationChange = () => {
       setPathname(window.location.pathname);
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -27,7 +39,10 @@ function App() {
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
 
-  const isEquipmentRentalPage = pathname === '/services/equipment-rental';
+  const isEquipmentRentalPage =
+    pathname === '/services/equipment-rental' || pathname === '/services/heavy-equipment-rental';
+  const serviceSlug = pathname.startsWith('/services/') ? pathname.slice('/services/'.length) : '';
+  const selectedService = getServiceBySlug(serviceSlug);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -36,6 +51,8 @@ function App() {
           <Header />
           {isEquipmentRentalPage ? (
             <EquipmentRentalPage />
+          ) : selectedService ? (
+            <ServiceDetail service={selectedService} />
           ) : (
             <main>
               <Hero />
